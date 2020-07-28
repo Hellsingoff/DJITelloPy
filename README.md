@@ -1,11 +1,10 @@
 # DJITelloPy
-DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf).
+DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными так же после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
 
 Установка через pip
 ```
 pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 ```
-
 ## Использование
 
 ### Управление одним дроном
@@ -291,60 +290,114 @@ drone.land() # посадка
 
 drone.end() # удаляет drone
 ```
-get_acceleration_x(self)
-X-Axis Acceleration
+____
+#### get_acceleration_x()
 
-Returns:
+Запросить информацию об ускорении по оси X.
 
-Type	Description
-float	
-float: acceleration
+Возвращает float.
+```python
+from djitellopy import Tello
 
-Source code in djitellopy/tello.py
-get_acceleration_y(self)
-Y-Axis Acceleration
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Returns:
+drone.connect() # подключение
 
-Type	Description
-float	
-float: acceleration
+drone.takeoff() # взлёт
 
-Source code in djitellopy/tello.py
-get_acceleration_z(self)
-Z-Axis Acceleration
+print(drone.get_acceleration_x()) # выводит значение ускорения по X
 
-Returns:
+drone.land() # посадка
 
-Type	Description
-float	
-float: acceleration
+drone.end() # удаляет drone
+```
+____
+#### get_acceleration_y()
 
-Source code in djitellopy/tello.py
-get_barometer(self)
-Get current barometer measurement in cm This resembles the absolute height. See https://en.wikipedia.org/wiki/Altimeter
+Запросить информацию об ускорении по оси Y.
 
-Returns:
+Возвращает float.
+```python
+from djitellopy import Tello
 
-Type	Description
-int	
-int: barometer measurement in cm
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Source code in djitellopy/tello.py
-get_battery(self)
-Get current battery percentage
+drone.connect() # подключение
 
-Returns:
+drone.takeoff() # взлёт
 
-Type	Description
-int	
-int: 0-100
+print(drone.get_acceleration_y()) # выводит значение ускорения по Y
 
-Source code in djitellopy/tello.py
-get_current_state(self)
-Call this function to attain the state of the Tello. Returns a dict with all fields. Internal method, you normally wouldn't call this yourself.
+drone.land() # посадка
 
-Source code in djitellopy/tello.py
+drone.end() # удаляет drone
+```
+____
+#### get_acceleration_z()
+Запросить информацию об ускорении по оси Z.
+
+Возвращает float.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+print(drone.get_acceleration_z()) # выводит значение ускорения по Z
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
+____
+#### get_barometer()
+Запросить данные встроенного барометра.
+
+Возвращает int.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_barometer()) # выводит показания барометра
+
+drone.end() # удаляет drone
+```
+____
+#### get_battery()
+Запросить уровень заряда аккумулятора.
+
+Возвращает целое число процентов (0 - 100).
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_battery()) # выводит уровень заряда аккумулятора
+
+drone.end() # удаляет drone
+```
+____
+#### get_current_state()
+Запросить все показатели дрона.
+
+Возвращает словарь:
+
+
+
+
+
+
+
+
+
 get_distance_tof(self)
 Get current distance value from TOF in cm
 
