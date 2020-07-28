@@ -39,11 +39,13 @@ drone.connect() # подключение
 
 Подключение дрона к существующей локальной сети по Wi-Fi.
 
+Команда поддерживается только Tello EDU.
+
 Первый аргумент - имя сети, второй аргумент - её пароль.
 
 После выполнения команды дрон перезагрузится и подключится к указанной сети.
 
-Команда поддерживается только Tello EDU.
+Дрон запоминает настройку и всегда будет подключаться к этой сети. Для сброса настроек Wi-Fi надо включить дрон и пять секунд держать кнопку питания (до перезагрузки).
 ```python
 from djitellopy import Tello
 
@@ -68,9 +70,12 @@ drone.connect_to_wifi('example', 'pass') # дрон перезагрузится
 
 Если такую окружность найти не удалось или её радиус не входит в допустимые значения - дрон отправит сообщение об ошибке и сядет.
 
-Both points are relative to the current position
-The current position and both points must form a circle arc.
-If the arc radius is not within the range of 0.5-10 meters, it raises an Exception
+Дополнительные ограничения:
+
+| Аргумент | Данные | Допустимые значения |
+|----------|------------------|--------|
+| x1 | int (сантиметры) | -500...500 |
+
 x1/x2, y1/y2, z1/z2 can't both be between -20-20 at the same time, but can both be 0.
 Parameters:
 
