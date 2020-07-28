@@ -396,35 +396,22 @@ ____
 | yaw | int | TODO |
 | vgx | int | TODO |
 | vgy | int | TODO |
-| z2 | int (сантиметры) | -500 - 500 |
-| speed | int (сантиметры в секунду) | 10 - 60 |
-| mid | int (Mission Pad ID) | 1 - 8 |
-
-
-        # Tello EDU with mission pads enabled only
-        'mid': int,
-        'x': int,
-        'y': int,
-        'z': int,
-        # 'mpry': (custom format 'x,y,z')
-
-        # common entries
-        'pitch': int,
-        'roll': int,
-        'yaw': int,
-        'vgx': int,
-        'vgy': int,
-        'vgz': int,
-        'templ': int,
-        'temph': int,
-        'tof': int,
-        'h': int,
-        'bat': int,
-        'baro': float,
-        'time': int,
-        'agx': float,
-        'agy': float,
-        'agz': float,
+| vgz | int | TODO |
+| templ | int | Самая низкая температура с момента включения дрона |
+| temph | int | Самая высокая температура с момента включения дрона |
+| tof | int | Показатель датчика расстояния до препятствия снизу |
+| h | int | Высота (TODO) |
+| bat | int | Уровень заряда аккумулятора |
+| baro | int | Показатель барометра |
+| time | int | Время полёта с последнего взлёта |
+| agx | float | TODO |
+| agy | float | TODO |
+| agz | float | TODO |
+| mid | int | ID найденного Mission Pad |
+| x | int | Расстояние до найденного Mission Pad по оси X относительно дрона |
+| y | int | Расстояние до найденного Mission Pad по оси Y относительно дрона |
+| z | int | Расстояние до найденного Mission Pad по оси Z относительно дрона |
+| mpry | str | Координаты Mission Pad относительно дрона в формате 'x,y,z' |
 
 
 
