@@ -69,9 +69,6 @@ drone.connect_to_wifi('example', 'pass') # дрон перезагрузится
 Координаты x2 y2 z2, x1 y1 z1 и текущее расположение дрона (координаты 0 0 0) должны находиться на окружности радиусом 0.5-10 метров.
 
 Если такую окружность найти не удалось или её радиус не входит в допустимые значения - дрон отправит сообщение об ошибке и сядет.
-
-Дополнительные ограничения:
-
 | Аргумент | Данные | Допустимые значения |
 |:----------:|:------------------:|:--------:|
 | x1 | int (сантиметры) | -500 - 500 |
@@ -81,85 +78,47 @@ drone.connect_to_wifi('example', 'pass') # дрон перезагрузится
 | y2 | int (сантиметры) | -500 - 500 |
 | z2 | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 60 |
+```python
+from djitellopy import Tello
 
-x1/x2, y1/y2, z1/z2 can't both be between -20-20 at the same time, but can both be 0.
-Parameters:
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Name	Type	Description	Default
-x1	int	
--500-500
+drone.connect() # подключение
 
-required
-x2	int	
--500-500
+drone.takeoff() # взлёт
 
-required
-y1	int	
--500-500
+drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуокружности
+```
+Визуализация примера выше:
+[curve_flight](/images/curve.png)
 
-required
-y2	int	
--500-500
++ **curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)**
 
-required
-z1	int	
--500-500
+Полёт по дуге (части окружности) относительно Mission pad (коврика).
 
-required
-z2	int	
--500-500
+Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду.
 
-required
-speed	int	
-10-60
+Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0).
 
-required
-Source code in djitellopy/tello.py
-curve_xyz_speed_mid(self, x1, y1, z1, x2, y2, z2, speed, mid)
-Fly to x2 y2 z2 in a curve via x2 y2 z2. Speed defines the traveling speed in cm/s.
+Движение по оси X - вперед (куда указывает ракета). По оси Y - влево относительно ракеты. По оси Z - вверх от Mission Pad.
 
-Both points are relative to the mission pad with id mid.
-The current position and both points must form a circle arc.
-If the arc radius is not within the range of 0.5-10 meters, it raises an Exception
-x1/x2, y1/y2, z1/z2 can't both be between -20-20 at the same time, but can both be 0.
-Parameters:
+Координаты x2 y2 z2, x1 y1 z1 и Mission Pad (координаты 0 0 0) должны находиться на окружности радиусом 0.5-10 метров.
 
-Name	Type	Description	Default
-x1	int	
--500-500
+Если такую окружность найти не удалось или её радиус не входит в допустимые значения - дрон отправит сообщение об ошибке и сядет.
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| x1 | int (сантиметры) | -500 - 500 |
+| y1 | int (сантиметры) | -500 - 500 |
+| z1 | int (сантиметры) | -500 - 500 |
+| x2 | int (сантиметры) | -500 - 500 |
+| y2 | int (сантиметры) | -500 - 500 |
+| z2 | int (сантиметры) | -500 - 500 |
+| speed | int (сантиметры в секунду) | 10 - 60 |
+| mid | int (Mission Pad ID) | 1 - 8 |
 
-required
-y1	int	
--500-500
++ **disable_mission_pads()**
 
-required
-z1	int	
--500-500
-
-required
-x2	int	
--500-500
-
-required
-y2	int	
--500-500
-
-required
-z2	int	
--500-500
-
-required
-speed	int	
-10-60
-
-required
-mid	int	
-1-8
-
-required
-Source code in djitellopy/tello.py
-disable_mission_pads(self)
-Disable mission pad detection
+Отключает поиск Mission Pad.
 
 Source code in djitellopy/tello.py
 emergency(self)
