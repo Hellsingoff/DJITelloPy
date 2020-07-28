@@ -1,9 +1,9 @@
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf).
 
-## Установка через pip
+Установка через pip
 ```
-$ pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
+pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 ```
 
 ## Использование
@@ -23,9 +23,9 @@ drone1 = Tello() # дрон по адресу 192.168.10.1
 drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 ```
 
-#### Методы класса Tello
+### Методы класса Tello
 
-connect() - вход в режим управления командами.
++ connect() - вход в режим управления командами.
 ```python
 from djitellopy import Tello
 
@@ -33,7 +33,7 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 ```
-connect_to_wifi(ssid, password) - подключение дрона к существующей локальной сети по Wi-Fi.
++ connect_to_wifi(ssid, password) - подключение дрона к существующей локальной сети по Wi-Fi.
 
 Первый аргумент - имя сети, второй аргумент - её пароль.
 
@@ -50,7 +50,7 @@ drone.connect() # подключение к дрону
 drone.connect_to_wifi('example', 'password') # дрон перезагрузится и подключится к точке example с паролем password
 ```
 
-curve_xyz_speed(self, x1, y1, z1, x2, y2, z2, speed)
++ curve_xyz_speed(self, x1, y1, z1, x2, y2, z2, speed)
 Fly to x2 y2 z2 in a curve via x2 y2 z2. Speed defines the traveling speed in cm/s.
 
 Both points are relative to the current position
