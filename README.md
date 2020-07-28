@@ -90,7 +90,7 @@ drone.takeoff() # взлёт
 drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуокружности
 ```
 Визуализация примера выше:
-[curve_flight](/images/curve.png)
+![curve_flight](/images/curve.png)
 
 + **curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)**
 
