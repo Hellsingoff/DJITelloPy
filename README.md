@@ -96,6 +96,8 @@ drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуок
 
 Полёт по дуге (части окружности) относительно Mission pad (коврика).
 
+Необходимо сначала активировать поиск Mission Pad. (СДЕЛАТЬ ССЫЛКУ)
+
 Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду.
 
 Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0).
@@ -115,26 +117,111 @@ drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуок
 | z2 | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 60 |
 | mid | int (Mission Pad ID) | 1 - 8 |
+```python
+from djitellopy import Tello
 
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.curve_xyz_speed_mid(100, 100, 0, 200, 0, 0, 60, 1) # полёт по полуокружности, если найден MP1
+```
+Визуализация примера выше:
+![curve_flight](/images/curve.png)
 + **disable_mission_pads()**
 
-Отключает поиск Mission Pad.
+Отключает определение Mission Pad.
+```python
+from djitellopy import Tello
 
-Source code in djitellopy/tello.py
-emergency(self)
-Stop all motors immediately.
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Source code in djitellopy/tello.py
-enable_mission_pads(self)
-Enable mission pad detection
+drone.connect() # подключение
 
-Source code in djitellopy/tello.py
-end(self)
-Call this method when you want to end the tello object
+drone.enable_mission_pads() # включаем функцию определения MP
 
-Source code in djitellopy/tello.py
-flip(self, direction)
-Do a flip maneuver. Users would normally call one of the flip_x functions instead.
+drone.disable_mission_pads() # отключаем функцию определения MP
+```
++ **emergency()**
+
+Экстренная остановка моторов.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.emergency() # экстренная остановка моторов
+```
++ **enable_mission_pads()**
+
+Активация поиска Mission Pad
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.enable_mission_pads() # включаем функцию определения MP
+
+drone.disable_mission_pads() # отключаем функцию определения MP
+```
++ **end()**
+
+Завершение работы с дроном, удаляет объект дрона из памяти.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
++ **flip(direction)**
+
+Сделать кувырок.
+
+Кувырки могут не работать при заряде аккумулятора ниже 50%.
+
+Требуется аргумент - направление кувырка.
+| Аргумент | Действие |
+|:--------:|:------------------:|
+| 'f' | Кувырок вперед |
+| 'b' | Кувырок назад |
+| 'l' | Кувырок влево |
+| 'r' | Кувырок вправо |
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.flip('l') # кувырок влево
+
+drone.flip('r') # кувырок вправо
+
+drone.flip('f') # кувырок вперед
+
+drone.flip('b') # кувырок назад
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
 
 Parameters:
 
