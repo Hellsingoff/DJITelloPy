@@ -191,7 +191,7 @@ ____
 
 Кувырки могут не работать при заряде аккумулятора ниже 50%.
 
-Требуется аргумент - направление кувырка.
+Требуется аргумент - направление кувырка (строка).
 | Аргумент | Действие |
 |:--------:|:------------------:|
 | 'f' | Кувырок вперед |
@@ -219,31 +219,78 @@ drone.land() # посадка
 
 drone.end() # удаляет drone
 ```
+____
+#### flip_back()
+Кувырок назад.
+```python
+from djitellopy import Tello
 
-Parameters:
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Name	Type	Description	Default
-direction	str	
-l (left), r (right), f (forward) or b (back)
+drone.connect() # подключение
 
-required
-Source code in djitellopy/tello.py
-flip_back(self)
-Flip backwards.
+drone.takeoff() # взлёт
 
-Source code in djitellopy/tello.py
-flip_forward(self)
-Flip forward.
+drone.flip_back() # кувырок назад
 
-Source code in djitellopy/tello.py
-flip_left(self)
-Flip to the left.
+drone.land() # посадка
 
-Source code in djitellopy/tello.py
-flip_right(self)
-Flip to the right.
+drone.end() # удаляет drone
+```
+____
+#### flip_forward()
+Кувырок вперед.
+```python
+from djitellopy import Tello
 
-Source code in djitellopy/tello.py
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.flip_forward() # кувырок вперед
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
+____
+#### flip_left()
+Кувырок влево.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.flip_left() # кувырок влево
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
+____
+#### flip_right()
+Кувырок вправо.
+```python
+from djitellopy import Tello
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.flip_right() # кувырок вправо
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
 get_acceleration_x(self)
 X-Axis Acceleration
 
