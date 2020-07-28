@@ -411,8 +411,26 @@ ____
 | x | int | Расстояние до найденного Mission Pad по оси X относительно дрона |
 | y | int | Расстояние до найденного Mission Pad по оси Y относительно дрона |
 | z | int | Расстояние до найденного Mission Pad по оси Z относительно дрона |
-| mpry | str | Координаты Mission Pad относительно дрона в формате 'x,y,z' |
+| mpry | str | Углы между Mission Pad и дроном в формате 'x,y,z' |
+```python
+from djitellopy import Tello
 
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_current_state()) # выводит весь словарь в "сыром" виде
+
+# выводит весь словарь построчно:
+state = drone.get_current_state()
+for key in state:
+    print(f'{key}: {state[key]}')
+
+# вывод поля 'mpry'
+print(drone.get_current_state()['mpry'])
+
+drone.end() # удаляет drone
+```
 
 
 
