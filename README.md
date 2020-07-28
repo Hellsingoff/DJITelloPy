@@ -25,8 +25,8 @@ drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 
 ### Методы класса Tello
 
-#### + **connect()**
-
+#### connect()
+____
 Вход в режим управления командами.
 ```python
 from djitellopy import Tello
@@ -35,8 +35,8 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 ```
-#### + **connect_to_wifi(ssid, password)**
-
+#### connect_to_wifi(ssid, password)
+____
 Подключение дрона к существующей локальной сети по Wi-Fi.
 
 Команда поддерживается только Tello EDU.
