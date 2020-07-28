@@ -1,5 +1,5 @@
 # DJITelloPy
-DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными так же после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
+DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
 
 Установка через pip
 ```
@@ -96,7 +96,7 @@ ____
 
 Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду.
 
-Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0).
+Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0). (TODO check)
 
 Движение по оси X - вперед (куда указывает ракета). По оси Y - влево относительно ракеты. По оси Z - вверх от Mission Pad.
 
@@ -128,7 +128,7 @@ drone.curve_xyz_speed_mid(100, 100, 0, 200, 0, 0, 60, 1) # полёт по по�
 ![curve_flight](/images/curve.png)
 ____
 #### disable_mission_pads()
-Отключает определение Mission Pad.
+Отключает определение Mission Pad. (TODO check ryze)
 ```python
 from djitellopy import Tello
 
@@ -386,13 +386,45 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_current_state()
-Запросить все показатели дрона.
+Запросить все показатели дрона. (TODO check ryze)
 
 Возвращает словарь:
+| Ключ | Тип данных | Значение |
+|:----:|:----------:|:--------:|
+| pitch | int | TODO |
+| roll | int | TODO |
+| yaw | int | TODO |
+| vgx | int | TODO |
+| vgy | int | TODO |
+| z2 | int (сантиметры) | -500 - 500 |
+| speed | int (сантиметры в секунду) | 10 - 60 |
+| mid | int (Mission Pad ID) | 1 - 8 |
 
 
+        # Tello EDU with mission pads enabled only
+        'mid': int,
+        'x': int,
+        'y': int,
+        'z': int,
+        # 'mpry': (custom format 'x,y,z')
 
-
+        # common entries
+        'pitch': int,
+        'roll': int,
+        'yaw': int,
+        'vgx': int,
+        'vgy': int,
+        'vgz': int,
+        'templ': int,
+        'temph': int,
+        'tof': int,
+        'h': int,
+        'bat': int,
+        'baro': float,
+        'time': int,
+        'agx': float,
+        'agy': float,
+        'agz': float,
 
 
 
