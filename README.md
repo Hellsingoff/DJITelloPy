@@ -292,7 +292,6 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_acceleration_x()
-
 Запросить информацию об ускорении по оси X.
 
 Возвращает float.
@@ -391,22 +390,22 @@ ____
 Возвращает словарь:
 | Ключ | Тип данных | Значение |
 |:----:|:----------:|:--------:|
-| pitch | int | TODO |
-| roll | int | TODO |
-| yaw | int | TODO |
-| vgx | int | TODO |
-| vgy | int | TODO |
-| vgz | int | TODO |
+| pitch | int | Наклон по X |
+| roll | int | Наклон по Y |
+| yaw | int | Поворот по Z |
+| vgx | int | Скорость по X |
+| vgy | int | Скорость по Y |
+| vgz | int | Скорость по Z |
 | templ | int | Самая низкая температура с момента включения дрона |
 | temph | int | Самая высокая температура с момента включения дрона |
 | tof | int | Показатель датчика расстояния до препятствия снизу |
-| h | int | Высота (TODO) |
+| h | int | Высота относительно координатной оси |
 | bat | int | Уровень заряда аккумулятора |
 | baro | int | Показатель барометра |
 | time | int | Время полёта с последнего взлёта |
-| agx | float | TODO |
-| agy | float | TODO |
-| agz | float | TODO |
+| agx | float | Ускорение по X |
+| agy | float | Ускорение по Y |
+| agz | float | Ускорение по Z |
 | mid | int | ID найденного Mission Pad |
 | x | int | Расстояние до найденного Mission Pad по оси X относительно дрона |
 | y | int | Расстояние до найденного Mission Pad по оси Y относительно дрона |
@@ -426,7 +425,7 @@ state = drone.get_current_state()
 for key in state:
     print(f'{key}: {state[key]}')
 
-# вывод поля 'mpry'
+# вывод значения поля 'mpry'
 print(drone.get_current_state()['mpry'])
 
 drone.end() # удаляет drone
@@ -483,9 +482,9 @@ drone.connect() # подключение
 
 drone.streamon() # активация стрима камеры
 
-drones_camera = drone.get_frame_read() # получаем объект доступа к камере
+drone_camera = drone.get_frame_read() # получаем объект доступа к камере
 
-cv2.imwrite("picture.png", drones_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
+cv2.imwrite("picture.png", drone_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
 
 drone.end() # удаляет drone
 ```
@@ -509,7 +508,7 @@ ____
 #### get_highest_temperature()
 Запросить наивысшую, с момента включения, температуру дрона в °C. (TODO включения?)
 
-Возвращает float.
+Возвращает int.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -525,7 +524,7 @@ ____
 #### get_lowest_temperature()
 Запросить наименьшую, с момента включения, температуру дрона в °C. (TODO включения?)
 
-Возвращает float.
+Возвращает int.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -611,6 +610,188 @@ print(drone.get_mission_pad_id()) # выводит Mission Pad ID
 
 drone.end() # удаляет drone
 ```
+____
+#### get_pitch()
+Запросить наклон дрона по оси X.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_pitch()) # выводит угол
+
+drone.end() # удаляет drone
+```
+____
+#### get_roll()
+Запросить наклон дрона по оси Y.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_roll()) # выводит угол
+
+drone.end() # удаляет drone
+```
+____
+#### get_speed_x()
+Запросить текущую скорость по оси X.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_speed_x()) # выводит скорость по оси X
+
+drone.end() # удаляет drone
+```
+____
+#### get_speed_y()
+Запросить текущую скорость по оси Y.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_speed_y()) # выводит скорость по оси Y
+
+drone.end() # удаляет drone
+```
+____
+#### get_speed_z()
+Запросить текущую скорость по оси Z.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_speed_z()) # выводит скорость по оси Z
+
+drone.end() # удаляет drone
+```
+____
+#### get_state_field(key)
+Запросить у дрона значение определенного поля.
+
+Аргумент - имя поля (строка).
+| Ключ | Тип данных | Значение |
+|:----:|:----------:|:--------:|
+| pitch | int | Наклон по X |
+| roll | int | Наклон по Y |
+| yaw | int | Поворот по Z |
+| vgx | int | Скорость по X |
+| vgy | int | Скорость по Y |
+| vgz | int | Скорость по Z |
+| templ | int | Самая низкая температура с момента включения дрона |
+| temph | int | Самая высокая температура с момента включения дрона |
+| tof | int | Показатель датчика расстояния до препятствия снизу |
+| h | int | Высота относительно координатной оси |
+| bat | int | Уровень заряда аккумулятора |
+| baro | int | Показатель барометра |
+| time | int | Время полёта с последнего взлёта |
+| agx | float | Ускорение по X |
+| agy | float | Ускорение по Y |
+| agz | float | Ускорение по Z |
+| mid | int | ID найденного Mission Pad |
+| x | int | Расстояние до найденного Mission Pad по оси X относительно дрона |
+| y | int | Расстояние до найденного Mission Pad по оси Y относительно дрона |
+| z | int | Расстояние до найденного Mission Pad по оси Z относительно дрона |
+| mpry | str | Углы между Mission Pad и дроном в формате 'x,y,z' |
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_state_field('mpry')) # выводит значение поля 'mpry'
+
+drone.end() # удаляет drone
+```
+____
+#### get_temperature()
+Запросить у дрона среднюю температуру (не текущую) в °C.
+
+Фактически является средним между минимальным и максимальным значением.
+
+Возвращает float.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_temperature()) # выводит среднюю температуру
+
+drone.end() # удаляет drone
+```
+____
+#### get_udp_video_address()
+Запросить у дрона UDP адрес видео.
+
+Внутренний метод библиотеки. Скорее всего, он Вам не нужен.
+
+Возвращает str.
+____
+#### get_video_capture()
+Запросить у дрона объект VideoCapture.
+
+Ещё один внутренний библиотеки. Скорее всего он Вам не нужен.
+
+Возвращает VideoCapture.
+____
+#### get_yaw()
+Запросить поворот дрона по оси Z.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_yaw()) # выводит угол
+
+drone.end() # удаляет drone
+```
+____
+#### go_xyz_speed(x, y, z, speed)
+Полёт в координаты x y z со скоростью speed сантиметров в секунду. (TODO check speed)
+
+За начало осей координат (0 0 0) берется текущее местоположение дрона.
+
+Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
+
+Допустимые значения:
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| x | int (сантиметры) | -500 - 500 |
+| y | int (сантиметры) | -500 - 500 |
+| z | int (сантиметры) | -500 - 500 |
+| speed | int (сантиметры в секунду) | 10 - 100 |
 
 
 
@@ -621,117 +802,6 @@ drone.end() # удаляет drone
 
 
 
-
-get_pitch(self)
-Get pitch in degree
-
-Returns:
-
-Type	Description
-int	
-int: pitch in degree
-
-Source code in djitellopy/tello.py
-get_roll(self)
-Get roll in degree
-
-Returns:
-
-Type	Description
-int	
-int: roll in degree
-
-Source code in djitellopy/tello.py
-get_speed_x(self)
-X-Axis Speed
-
-Returns:
-
-Type	Description
-int	
-int: speed
-
-Source code in djitellopy/tello.py
-get_speed_y(self)
-Y-Axis Speed
-
-Returns:
-
-Type	Description
-int	
-int: speed
-
-Source code in djitellopy/tello.py
-get_speed_z(self)
-Z-Axis Speed
-
-Returns:
-
-Type	Description
-int	
-int: speed
-
-Source code in djitellopy/tello.py
-get_state_field(self, key)
-Get a specific sate field by name. Internal method, you normally wouldn't call this yourself.
-
-Source code in djitellopy/tello.py
-get_temperature(self)
-Get average temperature
-
-Returns:
-
-Type	Description
-float	
-float: average temperature (°C)
-
-Source code in djitellopy/tello.py
-get_udp_video_address(self)
-Internal method, you normally wouldn't call this youself.
-
-Source code in djitellopy/tello.py
-get_video_capture(self)
-Get the VideoCapture object from the camera drone. Users usually want to use get_frame_read instead.
-
-Returns:
-
-Type	Description
-VideoCapture
-
-Source code in djitellopy/tello.py
-get_yaw(self)
-Get yaw in degree
-
-Returns:
-
-Type	Description
-int	
-int: yaw in degree
-
-Source code in djitellopy/tello.py
-go_xyz_speed(self, x, y, z, speed)
-Fly to x y z relative to the current position. Speed defines the traveling speed in cm/s.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-y	int	
-20-500
-
-required
-z	int	
-20-500
-
-required
-speed	int	
-10-100
-
-required
-Source code in djitellopy/tello.py
 go_xyz_speed_mid(self, x, y, z, speed, mid)
 Fly to x y z relative to the mission pad with id mid. Speed defines the traveling speed in cm/s.
 
