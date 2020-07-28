@@ -15,7 +15,7 @@ pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 
 Если дрон подключен к локальной сети - при инициализации класса нужно как аргумент указать строку, содержащую IP дрона:
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone1 = Tello() # дрон по адресу 192.168.10.1
 
@@ -27,7 +27,7 @@ ____
 #### connect()
 Вход в режим управления командами.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -39,13 +39,13 @@ ____
 
 Команда поддерживается только Tello EDU.
 
-Первый аргумент - имя сети, второй аргумент - её пароль.
+Первый аргумент - имя сети (строка), второй аргумент - её пароль (строка).
 
 После выполнения команды дрон перезагрузится и подключится к указанной сети.
 
 Дрон запоминает настройку и всегда будет подключаться к этой сети. Для сброса настроек Wi-Fi надо включить дрон и пять секунд держать кнопку питания (до перезагрузки).
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1, мы подключились к создаваемой дроном точке доступа.
 
@@ -76,7 +76,7 @@ ____
 | z2 | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 60 |
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -90,9 +90,9 @@ drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуок
 ![curve_flight](/images/curve.png)
 ____
 #### curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)
-Полёт по дуге (части окружности) относительно Mission pad (коврика).
+Полёт по дуге (части окружности) относительно Mission pad (коврика). (TODO check ryze)
 
-Необходимо сначала активировать поиск Mission Pad. (СДЕЛАТЬ ССЫЛКУ)
+Необходимо сначала активировать поиск Mission Pad методом [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads)
 
 Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду.
 
@@ -114,7 +114,7 @@ ____
 | speed | int (сантиметры в секунду) | 10 - 60 |
 | mid | int (Mission Pad ID) | 1 - 8 |
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -130,7 +130,7 @@ ____
 #### disable_mission_pads()
 Отключает определение Mission Pad. (TODO check ryze)
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -144,7 +144,7 @@ ____
 #### emergency()
 Экстренная остановка моторов.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -158,7 +158,7 @@ ____
 #### enable_mission_pads()
 Активация поиска Mission Pad
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -172,7 +172,7 @@ ____
 #### end()
 Завершение работы с дроном, удаляет объект дрона из памяти.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -198,7 +198,7 @@ ____
 | 'l' | Кувырок влево |
 | 'r' | Кувырок вправо |
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -222,7 +222,7 @@ ____
 #### flip_back()
 Кувырок назад.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -240,7 +240,7 @@ ____
 #### flip_forward()
 Кувырок вперед.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -258,7 +258,7 @@ ____
 #### flip_left()
 Кувырок влево.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -276,7 +276,7 @@ ____
 #### flip_right()
 Кувырок вправо.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -297,7 +297,7 @@ ____
 
 Возвращает float.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -318,7 +318,7 @@ ____
 
 Возвращает float.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -338,7 +338,7 @@ ____
 
 Возвращает float.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -358,7 +358,7 @@ ____
 
 Возвращает int.
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -374,7 +374,7 @@ ____
 
 Возвращает целое число процентов (0 - 100).
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -413,7 +413,7 @@ ____
 | z | int | Расстояние до найденного Mission Pad по оси Z относительно дрона |
 | mpry | str | Углы между Mission Pad и дроном в формате 'x,y,z' |
 ```python
-from djitellopy import Tello
+from djitellopy import Tello # импорт класса управления одним дроном
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -431,110 +431,197 @@ print(drone.get_current_state()['mpry'])
 
 drone.end() # удаляет drone
 ```
+____
+#### get_distance_tof()
+Запросить у дрона расстояние до препятствия снизу.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_distance_tof()) # выводит расстояние до препятствия снизу
+
+drone.end() # удаляет drone
+```
+____
+#### get_flight_time()
+Запросить у дрона время полёта в секундах с момента последнего взлёта.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_flight_time()) # выводит время полета
+
+drone.end() # удаляет drone
+```
+____
+#### get_frame_read()
+Получить объект BackgroundFrameRead для подключения к камере дрона. (TODO check on WiFi)
+
+Предварительно необходимо включить стрим камеры командой streamon() (TODO)
+
+Позволяет получить в дальнейшем изображение с камеры.
+
+Возвращает BackgroundFrameRead.
+```python
+import cv2 # импорт библиотеки компьютерного зрения для работы с камерой
+
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.streamon() # активация стрима камеры
+
+drones_camera = drone.get_frame_read() # получаем объект доступа к камере
+
+cv2.imwrite("picture.png", drones_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
+
+drone.end() # удаляет drone
+```
+____
+#### get_height()
+Запросить высоту дрона относительно оси координат в сантиметрах. (TODO check)
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_height()) # выводит высоту дрона
+
+drone.end() # удаляет drone
+```
+____
+#### get_highest_temperature()
+Запросить наивысшую, с момента включения, температуру дрона в °C. (TODO включения?)
+
+Возвращает float.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_highest_temperature()) # выводит наивысшую температуру дрона
+
+drone.end() # удаляет drone
+```
+____
+#### get_lowest_temperature()
+Запросить наименьшую, с момента включения, температуру дрона в °C. (TODO включения?)
+
+Возвращает float.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_lowest_temperature()) # выводит наименьшую температуру дрона
+
+drone.end() # удаляет drone
+```
+____
+#### get_mission_pad_distance_x()
+Запросить дистанцию по оси X до Mission Pad в сантиметрах.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_mission_pad_distance_x()) # выводит расстояние до MP по оси X
+
+drone.end() # удаляет drone
+```
+____
+#### get_mission_pad_distance_y()
+Запросить дистанцию по оси Y до Mission Pad в сантиметрах.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_mission_pad_distance_y()) # выводит расстояние до MP по оси Y
+
+drone.end() # удаляет drone
+```
+____
+#### get_mission_pad_distance_z()
+Запросить дистанцию по оси Z до Mission Pad в сантиметрах.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_mission_pad_distance_z()) # выводит расстояние до MP по оси Z
+
+drone.end() # удаляет drone
+```
+____
+#### get_mission_pad_id()
+Запросить ID определенного камерой дрона Mission Pad.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO check ryze)
+
+Возвращает int.
+
+Если Mission Pad не обнаружен - возвращает -1.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.get_mission_pad_id()) # выводит Mission Pad ID
+
+drone.end() # удаляет drone
+```
 
 
 
 
-get_distance_tof(self)
-Get current distance value from TOF in cm
 
-Returns:
 
-Type	Description
-int	
-int: TOF distance in cm
 
-Source code in djitellopy/tello.py
-get_flight_time(self)
-Get the time the motors have been active in seconds
 
-Returns:
 
-Type	Description
-int	
-int: flight time in s
 
-Source code in djitellopy/tello.py
-get_frame_read(self)
-Get the BackgroundFrameRead object from the camera drone. Then, you just need to call backgroundFrameRead.frame to get the actual frame received by the drone.
 
-Returns:
-
-Type	Description
-BackgroundFrameRead	
-BackgroundFrameRead
-
-Source code in djitellopy/tello.py
-get_height(self)
-Get current height in cm
-
-Returns:
-
-Type	Description
-int	
-int: height in cm
-
-Source code in djitellopy/tello.py
-get_highest_temperature(self)
-Get highest temperature
-
-Returns:
-
-Type	Description
-int	
-float: highest temperature (°C)
-
-Source code in djitellopy/tello.py
-get_lowest_temperature(self)
-Get lowest temperature
-
-Returns:
-
-Type	Description
-int	
-int: lowest temperature (°C)
-
-Source code in djitellopy/tello.py
-get_mission_pad_distance_x(self)
-X distance to current mission pad Only available on Tello EDUs after calling enable_mission_pads
-
-Returns:
-
-Type	Description
-int	
-int: distance in cm
-
-Source code in djitellopy/tello.py
-get_mission_pad_distance_y(self)
-Y distance to current mission pad Only available on Tello EDUs after calling enable_mission_pads
-
-Returns:
-
-Type	Description
-int	
-int: distance in cm
-
-Source code in djitellopy/tello.py
-get_mission_pad_distance_z(self)
-Z distance to current mission pad Only available on Tello EDUs after calling enable_mission_pads
-
-Returns:
-
-Type	Description
-int	
-int: distance in cm
-
-Source code in djitellopy/tello.py
-get_mission_pad_id(self)
-Mission pad ID of the currently detected mission pad Only available on Tello EDUs after calling enable_mission_pads
-
-Returns:
-
-Type	Description
-int	
-int: -1 if none is detected, else 1-8
-
-Source code in djitellopy/tello.py
 get_pitch(self)
 Get pitch in degree
 
