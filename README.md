@@ -32,6 +32,8 @@ from djitellopy import Tello # импорт класса управления о
 drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
+
+drone.end() # удаляет drone
 ```
 ____
 #### connect_to_wifi(ssid, password)
@@ -85,6 +87,10 @@ drone.connect() # подключение
 drone.takeoff() # взлёт
 
 drone.curve_xyz_speed(100, 100, 0, 200, 0, 0, 60) # полёт по полуокружности
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
 ```
 Визуализация примера выше:
 ![curve_flight](/images/curve.png)
@@ -125,6 +131,10 @@ drone.connect() # подключение
 drone.takeoff() # взлёт
 
 drone.curve_xyz_speed_mid(100, 100, 0, 200, 0, 0, 60, 1) # полёт по полуокружности, если найден MP1
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
 ```
 Визуализация примера выше:
 ![curve_flight](/images/curve.png)
@@ -143,6 +153,8 @@ drone.connect() # подключение
 drone.enable_mission_pads() # включаем функцию определения MP
 
 drone.disable_mission_pads() # отключаем функцию определения MP
+
+drone.end() # удаляет drone
 ```
 ____
 #### emergency()
@@ -161,6 +173,8 @@ drone.connect() # подключение
 drone.takeoff() # взлёт
 
 drone.emergency() # экстренная остановка моторов
+
+drone.end() # удаляет drone
 ```
 ____
 #### enable_mission_pads()
@@ -177,6 +191,8 @@ drone.connect() # подключение
 drone.enable_mission_pads() # включаем функцию определения MP
 
 drone.disable_mission_pads() # отключаем функцию определения MP
+
+drone.end() # удаляет drone
 ```
 ____
 #### end()
@@ -190,7 +206,7 @@ drone.connect() # подключение
 
 drone.takeoff() # взлёт
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -224,7 +240,7 @@ drone.flip('f') # кувырок вперед
 
 drone.flip('b') # кувырок назад
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -242,7 +258,7 @@ drone.takeoff() # взлёт
 
 drone.flip_back() # кувырок назад
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -260,7 +276,7 @@ drone.takeoff() # взлёт
 
 drone.flip_forward() # кувырок вперед
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -278,7 +294,7 @@ drone.takeoff() # взлёт
 
 drone.flip_left() # кувырок влево
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -296,7 +312,7 @@ drone.takeoff() # взлёт
 
 drone.flip_right() # кувырок вправо
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -316,7 +332,7 @@ drone.takeoff() # взлёт
 
 print(drone.get_acceleration_x()) # выводит значение ускорения по X
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -337,7 +353,7 @@ drone.takeoff() # взлёт
 
 print(drone.get_acceleration_y()) # выводит значение ускорения по Y
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -357,7 +373,7 @@ drone.takeoff() # взлёт
 
 print(drone.get_acceleration_z()) # выводит значение ускорения по Z
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -821,7 +837,7 @@ drone.takeoff() # взлёт
 
 drone.go_xyz_speed(100, 0, 0, 100) # полёт на метр вперед со скоростью 100 см/с
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -858,7 +874,7 @@ drone.takeoff() # взлёт
 
 drone.go_xyz_speed(100, 0, 0, 100, 1) # полёт на метр вперед относительно MP1 со скоростью 100 см/с
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -903,7 +919,7 @@ drone.takeoff() # взлёт
 # после производится поиск MP2 и такой поворот дрона, чтобы разница между направлением дрона и ракетой на MP2 составила 0 градусов
 drone.go_xyz_speed(100, 0, 0, 100, 0, 1, 2)
 
-drone.land() # посадка
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -967,7 +983,127 @@ drone.move('up', 50) # полет вверх на 50 сантиметров
 
 drone.move('down', 50) # полет вниз на 50 сантиметров
 
-drone.land() # посадка
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_back(x)
+Полет назад на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_back(50) # полет назад на 50 сантиметров
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_down(x)
+Полет вниз на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_down(50) # полет вниз на 50 сантиметров
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_forward(x)
+Полет вперед на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_forward(50) # полет вперед на 50 сантиметров
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_left(x)
+Полет влево на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_left(50) # полет влево на 50 сантиметров
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_right(x)
+Полет вправо на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_right(50) # полет вправо на 50 сантиметров
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move_up(x)
+Полет вверх на x сантиметров.
+
+Принимает один аргумент - целое число от 20 до 500.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move_up(50) # полет вверх на 50 сантиметров
+
+drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
@@ -982,72 +1118,7 @@ drone.end() # удаляет drone
 
 
 
-move_back(self, x)
-Fly x cm backwards.
 
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
-move_down(self, x)
-Fly x cm down.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
-move_forward(self, x)
-Fly x cm forward.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
-move_left(self, x)
-Fly x cm left.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
-move_right(self, x)
-Fly x cm right.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
-move_up(self, x)
-Fly x cm up.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
 parse_state(state) staticmethod
 Parse a state line to a dictionary Internal method, you normally wouldn't call this yourself.
 
