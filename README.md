@@ -92,9 +92,9 @@ ____
 #### curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)
 Полёт по дуге (части окружности) относительно Mission pad (коврика). (TODO check ryze)
 
-Необходимо сначала активировать поиск Mission Pad методом [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
 
-Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду.
+Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду, иначе - выводит ошибку и приземляется.
 
 Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0). (TODO check)
 
@@ -540,7 +540,7 @@ ____
 #### get_mission_pad_distance_x()
 Запросить дистанцию по оси X до Mission Pad в сантиметрах.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
 
 Возвращает int.
 ```python
@@ -558,7 +558,7 @@ ____
 #### get_mission_pad_distance_y()
 Запросить дистанцию по оси Y до Mission Pad в сантиметрах.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
 
 Возвращает int.
 ```python
@@ -576,7 +576,7 @@ ____
 #### get_mission_pad_distance_z()
 Запросить дистанцию по оси Z до Mission Pad в сантиметрах.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO если не виден MP)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
 
 Возвращает int.
 ```python
@@ -594,7 +594,7 @@ ____
 #### get_mission_pad_id()
 Запросить ID определенного камерой дрона Mission Pad.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы в области видимости камеры дрона находился Mission Pad. (TODO check ryze)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
 
 Возвращает int.
 
@@ -763,7 +763,7 @@ ____
 Возвращает VideoCapture.
 ____
 #### get_yaw()
-Запросить поворот дрона по оси Z.
+Запросить угол поворота дрона относительно оси Z.
 
 Возвращает int.
 ```python
@@ -792,6 +792,26 @@ ____
 | y | int (сантиметры) | -500 - 500 |
 | z | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 100 |
+____
+#### go_xyz_speed_mid(x, y, z, speed, mid)
+Полёт в координаты x y z относительно Mission Pad mid со скоростью speed сантиметров в секунду. (TODO check speed)
+
+За начало осей координат (0 0 0) берется Mission Pad.
+
+Если Mission Pad с ID mid не обнаружен - выводит ошибку и приземляется.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
+
+Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
+
+Допустимые значения:
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| x | int (сантиметры) | -500 - 500 |
+| y | int (сантиметры) | -500 - 500 |
+| z | int (сантиметры) | -500 - 500 |
+| speed | int (сантиметры в секунду) | 10 - 100 |
+| mid | int (Mission Pad ID) | 1 - 8 |
 
 
 
@@ -802,33 +822,6 @@ ____
 
 
 
-go_xyz_speed_mid(self, x, y, z, speed, mid)
-Fly to x y z relative to the mission pad with id mid. Speed defines the traveling speed in cm/s.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
--500-500
-
-required
-y	int	
--500-500
-
-required
-z	int	
--500-500
-
-required
-speed	int	
-10-100
-
-required
-mid	int	
-1-8
-
-required
-Source code in djitellopy/tello.py
 go_xyz_speed_yaw_mid(self, x, y, z, speed, yaw, mid1, mid2)
 Fly to x y z relative to mid1. Then fly to 0 0 z over mid2 and rotate to yaw relative to mid2's rotation. Speed defines the traveling speed in cm/s.
 
