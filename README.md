@@ -1107,6 +1107,14 @@ drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
+____
+#### parse_state(state)
+Статический внутренний метод библиотеки для обработки данных, полученных от дрона. Он Вам не нужен.
+
+Принимает один аргумент - строку с данными в особом формате.
+
+Возвращает словарь.
+____
 
 
 
@@ -1119,10 +1127,6 @@ drone.end() # удаляет drone
 
 
 
-parse_state(state) staticmethod
-Parse a state line to a dictionary Internal method, you normally wouldn't call this yourself.
-
-Source code in djitellopy/tello.py
 query_attitude(self)
 Query IMU attitude data. Using get_pitch, get_roll and get_yaw is usually faster.
 
