@@ -22,7 +22,7 @@ drone1 = Tello() # дрон по адресу 192.168.10.1
 drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 ```
 
-### Методы класса Tello
+### Методы, применимые к объекту класса Tello
 ____
 #### connect()
 Вход в режим управления командами.
@@ -781,17 +781,32 @@ ____
 #### go_xyz_speed(x, y, z, speed)
 Полёт в координаты x y z со скоростью speed сантиметров в секунду. (TODO check speed)
 
-За начало осей координат (0 0 0) берется текущее местоположение дрона.
+За начало осей координат (0 0 0) берется текущее местоположение дрона. (TODO check z)
 
 Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
-Допустимые значения:
+Допустимые значения аргументов:
 | Аргумент | Данные | Допустимые значения |
 |:----------:|:------------------:|:--------:|
 | x | int (сантиметры) | -500 - 500 |
 | y | int (сантиметры) | -500 - 500 |
 | z | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 100 |
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.go_xyz_speed(100, 0, 0, 100) # полёт на метр вперед со скоростью 100 см/с
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
 ____
 #### go_xyz_speed_mid(x, y, z, speed, mid)
 Полёт в координаты x y z относительно Mission Pad mid со скоростью speed сантиметров в секунду. (TODO check speed)
@@ -804,7 +819,7 @@ ____
 
 Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
-Допустимые значения:
+Допустимые значения аргументов:
 | Аргумент | Данные | Допустимые значения |
 |:----------:|:------------------:|:--------:|
 | x | int (сантиметры) | -500 - 500 |
@@ -812,6 +827,127 @@ ____
 | z | int (сантиметры) | -500 - 500 |
 | speed | int (сантиметры в секунду) | 10 - 100 |
 | mid | int (Mission Pad ID) | 1 - 8 |
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.go_xyz_speed(100, 0, 0, 100, 1) # полёт на метр вперед относительно MP1 со скоростью 100 см/с
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
+____
+#### go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)
+Полёт в координаты x y z относительно Mission Pad mid1 со скоростью speed сантиметров в секунду. В точке x y z производится поиск Mission Pad mid2 и дрон поворачивается на угол yaw относительно направления mid2. (TODO check speed)
+
+За начало осей координат (0 0 0) берется Mission Pad mid1. (TODO check coord)
+
+Если Mission Pad с ID mid1 не обнаружен - выводит ошибку и приземляется.
+
+Если в точке x y z Mission Pad с ID mid2 не обнаружен - выводит ошибку и приземляется.
+
+Неоднозначную работу команды может вызвать слишком близкое расположение двух Mission Pad. (TODO ссылка на область камеры)
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO check ryze) (TODO ссылка на область камеры)
+
+Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
+
+Допустимые значения аргументов:
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| x | int (сантиметры) | -500 - 500 |
+| y | int (сантиметры) | -500 - 500 |
+| z | int (сантиметры) | -500 - 500 |
+| speed | int (сантиметры в секунду) | 10 - 100 |
+| yaw | int (градусы) | -360 - 360 |
+| mid1 | int (Mission Pad ID) | 1 - 8 |
+| mid2 | int (Mission Pad ID) | 1 - 8 |
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+# полёт от MP1 на метр вперед (по направлению ракеты на коврике) со скоростью 100 см/с
+# после производится поиск MP2 и такой поворот дрона, чтобы разница между направлением дрона и ракетой на MP2 составила 0 градусов
+drone.go_xyz_speed(100, 0, 0, 100, 0, 1, 2)
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
+____
+#### land()
+Приземление дрона.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### move(direction, x)
+Полёт дрона параллельно координатным осям - вперед/назад (ось X), влево/вправо (ось Y), вверх/вниз (ось Z).
+
+Требуется два аргумента - направление (str) и расстояние в сантиметрах (int).
+
+Модуль расстояния должен быть не менее 20, попытка полёта на меньшую диистанцию вызовет ошибку. (TODO check negative)
+
+Допустимые значения аргументов:
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| direction | str (направление) | 'forward', 'back', 'left', 'right', 'up', 'down' |
+| x | int (сантиметры) | -500 - 500 |
+Значение аргументов направления:
+| Аргумент | Направление |
+|:--------:|:------------------:|
+| 'forward' | Полет вперед |
+| 'back' | Полет назад |
+| 'left' | Полет влево |
+| 'right' | Полет вправо |
+| 'up' | Полет вверх |
+| 'down' | Полет вниз |
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.move('forward', 50) # полет вперед на 50 сантиметров
+
+drone.move('back', 50) # полет назад на 50 сантиметров
+
+drone.move('left', 50) # полет влево на 50 сантиметров
+
+drone.move('right', 50) # полет вправо на 50 сантиметров
+
+drone.move('up', 50) # полет вверх на 50 сантиметров
+
+drone.move('down', 50) # полет вниз на 50 сантиметров
+
+drone.land() # посадка
+
+drone.end() # удаляет drone
+```
 
 
 
@@ -822,60 +958,7 @@ ____
 
 
 
-go_xyz_speed_yaw_mid(self, x, y, z, speed, yaw, mid1, mid2)
-Fly to x y z relative to mid1. Then fly to 0 0 z over mid2 and rotate to yaw relative to mid2's rotation. Speed defines the traveling speed in cm/s.
 
-Parameters:
-
-Name	Type	Description	Default
-x	int	
--500-500
-
-required
-y	int	
--500-500
-
-required
-z	int	
--500-500
-
-required
-speed	int	
-10-100
-
-required
-yaw	int	
--360-360
-
-required
-mid1	int	
-1-8
-
-required
-mid2	int	
-1-8
-
-required
-Source code in djitellopy/tello.py
-land(self)
-Automatic land
-
-Source code in djitellopy/tello.py
-move(self, direction, x)
-Tello fly up, down, left, right, forward or back with distance x cm. Users would normally call one of the move_x functions instead.
-
-Parameters:
-
-Name	Type	Description	Default
-direction	str	
-up, down, left, right, forward or back
-
-required
-x	int	
-20-500
-
-required
-Source code in djitellopy/tello.py
 move_back(self, x)
 Fly x cm backwards.
 
