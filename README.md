@@ -1241,7 +1241,7 @@ drone.connect() # подключение
 
 drone.takeoff() # взлет
 
-print(drone.query_height()) # выводит время полета
+print(drone.query_height()) # выводит высоту
 
 drone.land() # приземление
 
@@ -1282,6 +1282,131 @@ print(drone.query_sdk_version()) # выводит версию SDK
 
 drone.end() # удаляет drone
 ```
+____
+#### query_serial_number()
+Запрашивает у дрона его серийный номер.
+
+Возвращает str.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.query_serial_number()) # выводит серийный номер
+
+drone.end() # удаляет drone
+```
+____
+#### query_speed()
+Запрашивает у дрона текущее значение настройки скорости.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.query_speed()) # выводит текущее ограничение скорости
+
+drone.end() # удаляет drone
+```
+____
+#### query_temperature()
+Запрашивает у дрона его текущую температуру. (TODO check vs get)
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.query_temperature()) # выводит текущую темрпературу дрона
+
+drone.end() # удаляет drone
+```
+____
+#### query_wifi_signal_noise_ratio()
+Запрашивает у дрона текущее качество WiFi соединения. (TODO check ap vs client mode)
+
+Возвращает str. (TODO check lesser is better)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.query_wifi_signal_noise_ratio()) # выводит текущее качество приема
+
+drone.end() # удаляет drone
+```
+____
+#### rotate_clockwise(x)
+Поворот дрона по часовой стрелке на угол x.
+
+Аргумент - целое число от 1 до 3600. (TODO check ryze edu 0 negative 360+ 3600+)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.rotate_clockwise(90) # поворот на 90 градусов по часовой стрелке
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### rotate_counter_clockwise(x)
+Поворот дрона против часовой стрелки на угол x.
+
+Аргумент - целое число от 1 до 3600. (TODO check ryze edu 0 negative 360+ 3600+)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.rotate_counter_clockwise(90) # поворот на 90 градусов против часовой стрелки
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### send_command_with_return(command, timeout=RESPONSE_TIMEOUT) (TODO response link)
+Поворот дрона против часовой стрелки на угол x.
+
+Аргумент - целое число от 1 до 3600. (TODO check ryze edu 0 negative 360+ 3600+)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.rotate_counter_clockwise(90) # поворот на 90 градусов против часовой стрелки
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
 
 
 
@@ -1292,79 +1417,6 @@ drone.end() # удаляет drone
 
 
 
-
-query_sdk_version(self)
-Get SDK Version
-
-Returns:
-
-Type	Description
-str	
-str: SDK Version
-
-Source code in djitellopy/tello.py
-query_serial_number(self)
-Get Serial Number
-
-Returns:
-
-Type	Description
-str	
-str: Serial Number
-
-Source code in djitellopy/tello.py
-query_speed(self)
-Query speed setting (cm/s)
-
-Returns:
-
-Type	Description
-int	
-int: 1-100
-
-Source code in djitellopy/tello.py
-query_temperature(self)
-Query temperature (°C). Using get_temperature is usually faster.
-
-Returns:
-
-Type	Description
-int	
-int: 0-90
-
-Source code in djitellopy/tello.py
-query_wifi_signal_noise_ratio(self)
-Get Wi-Fi SNR
-
-Returns:
-
-Type	Description
-str	
-str: snr
-
-Source code in djitellopy/tello.py
-rotate_clockwise(self, x)
-Rotate x degree clockwise.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-1-360
-
-required
-Source code in djitellopy/tello.py
-rotate_counter_clockwise(self, x)
-Rotate x degree counter-clockwise.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-1-3600
-
-required
-Source code in djitellopy/tello.py
 send_command_with_return(self, command, timeout=7)
 Send command to Tello and wait for its response. Internal method, you normally wouldn't call this yourself.
 
