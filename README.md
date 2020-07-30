@@ -1164,6 +1164,117 @@ print(drone.query_barometer()) # выводит показания бароме�
 drone.end() # удаляет drone
 ```
 ____
+#### query_battery()
+Запрашивает у дрона уровень заряда аккумулятора в процентах.
+
+Работает медленнее запроса [get_battery()](https://github.com/Hellsingoff/DJITelloPy#get_battery), предоставляющего те же данные.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+print(drone.query_battery()) # выводит заряд аккумулятора
+
+drone.end() # удаляет drone
+```
+____
+#### query_distance_tof()
+Запрашивает у дрона расстояние до препятствия снизу в сантиметрах.
+
+Работает медленнее запроса [get_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#get_distance_tof), предоставляющего те же данные.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+print(drone.query_distance_tof()) # выводит расстояние до препятствия снизу
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### query_flight_time()
+Запрашивает у дрона время с начала текущего полета в секундах.
+
+Работает медленнее запроса [get_flight_time()](https://github.com/Hellsingoff/DJITelloPy#get_flight_time), предоставляющего те же данные.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+print(drone.query_flight_time()) # выводит время полета
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### query_height()
+Запрашивает у дрона высоту относительно координатной оси в сантиметрах.
+
+Работает медленнее запроса [get_height()](https://github.com/Hellsingoff/DJITelloPy#get_height), предоставляющего те же данные.
+
+Возвращает int.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+print(drone.query_height()) # выводит время полета
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### query_sdk_version()
+Запрашивает у дрона версию поддерживаемого набора команд.
+
+Версия 1.3 соответствует Tello Ryze, а версия 2.0 - Tello EDU.
+
+SDK 2.0 предоставляет дополнительный функционал:
+- Работа с Mission Pad:
+    - 
+
+А так же больше полей в запросах
+
+Возвращает str.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+print(drone.query_height()) # выводит время полета
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
 
 
 
@@ -1175,46 +1286,6 @@ ____
 
 
 
-query_battery(self)
-Get current battery percentage via a query command Using get_battery is usually faster
-
-Returns:
-
-Type	Description
-int	
-int: 0-100 in %
-
-Source code in djitellopy/tello.py
-query_distance_tof(self)
-Get distance value from TOF (cm) Using get_distance_tof is usually faster.
-
-Returns:
-
-Type	Description
-int	
-float: 30-1000
-
-Source code in djitellopy/tello.py
-query_flight_time(self)
-Query current fly time (s). Using get_flight_time is usually faster.
-
-Returns:
-
-Type	Description
-int	
-int: Seconds elapsed during flight.
-
-Source code in djitellopy/tello.py
-query_height(self)
-Get height in cm via a query command. Using get_height is usually faster
-
-Returns:
-
-Type	Description
-int	
-int: 0-3000
-
-Source code in djitellopy/tello.py
 query_sdk_version(self)
 Get SDK Version
 
