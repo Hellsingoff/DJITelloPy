@@ -1398,22 +1398,22 @@ ____
 
 Общие для Ryze (SDK 1.3) и EDU (SDK 2.0) команды:
 
-| Команда в SDK | Аргументы команды | Метод в библиотеке |
+| Команда в SDK | Допустимые аргументы | Метод в библиотеке |
 |:-------------:|:-----------------:|--------------------|
 | command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
 | takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
 | land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
 | streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
 | streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
-| emergency | (TODO response check) | [](https://github.com/Hellsingoff/DJITelloPy#emergency) |
-| up x | 19 < x (int) < 501 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_up) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+| emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
+| up x | 19 < x (int) < 501 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
+| down x | 19 < x (int) < 501 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
+| left x | 19 < x (int) < 501 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
+| right x | 19 < x (int) < 501 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
+| forward x | 19 < x (int) < 501 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
+| back x | 19 < x (int) < 501 | [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) |
+| cw x | 0 < x < 3601 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
+| ccw x | 0 < x < 3601 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
