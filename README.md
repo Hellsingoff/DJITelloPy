@@ -1394,7 +1394,7 @@ ____
 
 Обязательный - строка с командой. Необязательный - время ожидания ответа в секундах (int).
 
-Каждая команда из набора SDK реализована в данной библиотеке.
+Каждая команда из набора SDK реализована в данной библиотеке. (TODO stop)
 
 Общие для Ryze (SDK 1.3) и EDU (SDK 2.0) команды:
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
@@ -1443,6 +1443,38 @@ ____
 | mdirection x | x: 0, 1, 2 | [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) |
 | moff |  | [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) |
 | mon |  | [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) |
+
+Время ожидания ответа по умолчанию хранится в поле RESPONSE_TIMEOUT класса Tello.
+
+Возвращает str при успешном выполнении и False при ошибке.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+# контекстным методом открываем файл commands.txt, указав кодировку
+# файл построчно хранит команды:
+# command
+# takeoff
+# forward 100
+with open('commands.txt', encoding='utf-8-sig') as file:
+
+    text = file.read() # сохраняем все содержимое файла в переменную
+
+    text = text.split('\n') # разбиваем текст на массив строк по символу переноса
+
+    for command in text: # для каждой строки в полученном массиве
+
+        drone.send_command_with_return(command) # отправляем команду дрону со стандартной задержкой
+
+# Дрон взлетит и пролетит метр вперед, как было указано в файле
+
+# Ниже мы отправляем дрон на 5 метров вперед со скоростью 10 см/с, это займет как минимум 50 секунд
+# Поэтому мы указываем нестандартное время ожидания - 60 секунд
+drone.send_command_with_return('go 500 0 50 10', 60)
+
+drone.end() # удаляет drone
+```
 ____
 
 
@@ -1454,16 +1486,7 @@ ____
 
 
 
-send_command_with_return(self, command, timeout=7)
-Send command to Tello and wait for its response. Internal method, you normally wouldn't call this yourself.
 
-Returns:
-
-Type	Description
-bool/str	
-str with response text on success, False when unsuccessfull.
-
-Source code in djitellopy/tello.py
 send_command_without_return(self, command)
 Send command to Tello without expecting a response. Internal method, you normally wouldn't call this yourself.
 
