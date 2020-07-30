@@ -1415,8 +1415,7 @@ ____
 | cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
 | ccw x | x: int 1-3600 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
 | flip x | 'f', 'b', 'l', 'r' | [flip(x)](https://github.com/Hellsingoff/DJITelloPy#flipx) |
-| go x y z speed | (TODO check negative)
-x:  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+| go x y z speed | (TODO check negative)<br>x: -500 - 500<br>y: -500 -500<br>z: -500 - 500<br>speed: 10 - 100<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
