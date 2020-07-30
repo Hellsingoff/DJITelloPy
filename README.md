@@ -817,7 +817,7 @@ ____
 
 За начало осей координат (0 0 0) берется текущее местоположение дрона. (TODO check z)
 
-Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
+Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
 Допустимые значения аргументов:
 | Аргумент | Данные | Допустимые значения |
@@ -853,7 +853,7 @@ ____
 
 Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
 
-Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
+Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
 Допустимые значения аргументов: (TODO check negative)
 | Аргумент | Данные | Допустимые значения |
@@ -1399,31 +1399,39 @@ ____
 Общие для Ryze (SDK 1.3) и EDU (SDK 2.0) команды:
 
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
-|:-------------:|:-----------------:|--------------------|
-| command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
-| takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
-| land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
-| streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
-| streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
-| emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
-| up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
-| down x | x: int 20-500 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
-| left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
-| right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
-| forward x | x: int 20-500 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
+|:-------------:|:--------------------:|--------------------|
+| acceleration? |  | [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) |
+| attitude? |  | [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) |
 | back x | x: int 20-500 | [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) |
-| cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
+| baro? |  | [query_barometer()](https://github.com/Hellsingoff/DJITelloPy#query_barometer) |
+| battery? |  | [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) |
 | ccw x | x: int 1-3600 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
+| command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
+| curve x1 y1 z1 x2 y2 z2 speed | x1: -500 - 500<br>y1: -500 -500<br>z1: -500 - 500<br>x2: -500 - 500<br>y2: -500 -500<br>z2: -500 - 500<br>speed: 10 - 60<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) |
+| cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
+| down x | x: int 20-500 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
+| emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
 | flip x | 'f', 'b', 'l', 'r' | [flip(x)](https://github.com/Hellsingoff/DJITelloPy#flipx) |
-| go x y z speed | (TODO check negative)<br>x: -500 - 500<br>y: -500 -500<br>z: -500 - 500<br>speed: 10 - 100<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-
+| forward x | x: int 20-500 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
+| go x y z speed | (TODO check negative)<br>x: -500 - 500<br>y: -500 -500<br>z: -500 - 500<br>speed: 10 - 100<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) |
+| height? |  | [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) |
+| land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
+| left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
+| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br> | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
+| sdk? | (TODO check) | [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) |
+| sn? | (TODO check) | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
+| speed x | x: 10 - 100 | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| speed? |  | [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) |
+| streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
+| streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
+| takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
+| temp? |  | [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) |
+| time? |  | [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) |
+| tof? |  | [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) |
+| up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
+| wifi ssid pass | ssid: str<br>pass: str | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| wifi?  |  | [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) |
 ____
 
 
