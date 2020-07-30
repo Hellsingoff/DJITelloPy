@@ -93,6 +93,7 @@ drone.land() # приземление
 drone.end() # удаляет drone
 ```
 Визуализация примера выше:
+
 ![curve_flight](/images/curve.png)
 ____
 #### curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)
@@ -137,6 +138,7 @@ drone.land() # приземление
 drone.end() # удаляет drone
 ```
 Визуализация примера выше:
+
 ![curve_flight](/images/curve.png)
 ____
 #### disable_mission_pads()
@@ -431,7 +433,7 @@ ____
 | time | int (секунды) | Время полёта с последнего взлёта |
 | agx | float (TODO) | Ускорение по X |
 | agy | float (TODO) | Ускорение по Y |
-| agz | float (TOFO) | Ускорение по Z |
+| agz | float (TODO) | Ускорение по Z |
 | mid | int (номер) | ID найденного Mission Pad.<br>Поддерживается только в Tello EDU. |
 | x | int (сантиметры) | Расстояние до найденного Mission Pad по оси X относительно дрона.<br>Поддерживается только в Tello EDU. |
 | y | int (сантиметры) | Расстояние до найденного Mission Pad по оси Y относительно дрона.<br>Поддерживается только в Tello EDU. |
@@ -746,7 +748,7 @@ ____
 | time | int (секунды) | Время полёта с последнего взлёта |
 | agx | float (TODO) | Ускорение по X |
 | agy | float (TODO) | Ускорение по Y |
-| agz | float (TOFO) | Ускорение по Z |
+| agz | float (TODO) | Ускорение по Z |
 | mid | int (номер) | ID найденного Mission Pad.<br>Поддерживается только в Tello EDU. |
 | x | int (сантиметры) | Расстояние до найденного Mission Pad по оси X относительно дрона.<br>Поддерживается только в Tello EDU. |
 | y | int (сантиметры) | Расстояние до найденного Mission Pad по оси Y относительно дрона.<br>Поддерживается только в Tello EDU. |
