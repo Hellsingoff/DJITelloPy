@@ -1416,7 +1416,7 @@ ____
 | height? |  | [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) |
 | land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
 | left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
-| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br> | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br>(TODO check response) | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
 | right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
 | sdk? | (TODO check) | [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) |
 | sn? | (TODO check) | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
@@ -1430,13 +1430,13 @@ ____
 | time? |  | [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) |
 | tof? |  | [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) |
 | up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
-| wifi ssid pass | ssid: str<br>pass: str | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| wifi ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
 | wifi?  |  | [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) |
 
 Команды, добавленные в SDK 2.0 (Tello EDU):
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
 |:-------------:|:--------------------:|--------------------|
-| ap ssid pass | ssid: str<br>pass: str | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
+| ap ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
 | curve x1 y1 z1 x2 y2 z2 speed mid | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) |
 | go x y z speed mid | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) |
 | jump x y z speed yaw mid1 mid2 | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid1: int 1 - 8<br>mid2: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) |
@@ -1476,6 +1476,108 @@ drone.send_command_with_return('go 500 0 50 10', 60)
 drone.end() # удаляет drone
 ```
 ____
+#### send_command_without_return(command)
+Выполнение дроном команды из SDK без ожидания ответа.
+
+Аргумент - строка с командой из SDK, список которых приведен в описании метода [send_command_with_return(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_command_with_returncommand-timeoutresponse_timeout).
+
+Это внутренний метод библиотеки, его лучше не использовать без необходимости.
+____
+#### send_control_command(command, timeout=RESPONSE_TIMEOUT) (TODO response link)
+Выполнение дроном команды из SDK с ожиданием ответа.
+
+Принимает один обязательный и один необязательный аргументы.
+
+Обязательный - строка с командой. Необязательный - время ожидания ответа в секундах (int).
+
+Это внутренний метод библиотеки, его лучше не использовать без необходимости.
+____
+#### send_rc_control(y, x, z, yaw_z)
+Прямое управление полетом без координат, аргументы косвенно управляют скоростью винтов.
+
+Нулевые значения указывают дрону зависнуть на месте.
+
+Аргумент y управляет наклоном влево-вправо, аргумент x управляет наклоном вперед-назад, аргумент z упправляет высотой полета, а аргумент z_yaw управляет вращением в вертикальной плоскости. Чем больше положительное значение аргумента - тем сильнее наклон в одну сторону, а отрицательное - в другую сторону.
+| Аргумент | Данные | Допустимые значения |
+|:----------:|:------------------:|:--------:|
+| y | int | -100 - 100 |
+| x | int | -100 - 100 |
+| z | int | -100 - 100 |
+| z_yaw | int | -100 - 100 |
+
+Команда отправляется каждые TIME_BTW_RC_CONTROL_COMMANDS секунд. (TODO link and code)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлёт
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### send_read_command(command)
+Выполнение дроном команды из SDK с ожиданием ответа.
+
+Аргумент - строка с командой.
+
+Это внутренний метод библиотеки, он Вам не нужен.
+____
+#### set_mission_pad_detection_direction(x)
+Настройка направления поиска Mission Pad.
+
+Команда поддерживается только в Tello EDU.
+
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+
+Аргумент yказывает какие камеры задействовать для поиска:
+| Аргумент | Результат |
+|:--------:|:---------:|
+| 0 | Используется только нижняя камера, частота опроса 20 Hz. |
+| 1 | Используется только передняя камера, частота опроса 20 Hz. |
+| 2 | Используются обе камеры, частота опроса 10 Hz. |
+
+(TODO default val)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.enable_mission_pads() # активация определения MP
+
+drone.set_mission_pad_detection_direction(0) # использовать только нижнюю камеру
+
+drone.end() # удаляет drone
+```
+____
+#### set_speed(x)
+Настройка скорости полета дрона в сантиметрах в секунду по умолчанию. (TODO check after reboot)
+
+Аргумент - целое число от 10 до 100.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.set_speed(50) # устанавливаем скорость 50 см/с
+
+drone.move_forward(100) # полет на установленной скорости
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+(TODO check code)
 
 
 
@@ -1487,63 +1589,8 @@ ____
 
 
 
-send_command_without_return(self, command)
-Send command to Tello without expecting a response. Internal method, you normally wouldn't call this yourself.
 
-Source code in djitellopy/tello.py
-send_control_command(self, command, timeout=7)
-Send control command to Tello and wait for its response. Internal method, you normally wouldn't call this yourself.
 
-Source code in djitellopy/tello.py
-send_rc_control(self, left_right_velocity, forward_backward_velocity, up_down_velocity, yaw_velocity)
-Send RC control via four channels. Command is sent every self.TIME_BTW_RC_CONTROL_COMMANDS seconds.
-
-Parameters:
-
-Name	Type	Description	Default
-left_right_velocity	int	
--100~100 (left/right)
-
-required
-forward_backward_velocity	int	
--100~100 (forward/backward)
-
-required
-up_down_velocity	int	
--100~100 (up/down)
-
-required
-yaw_velocity	int	
--100~100 (yaw)
-
-required
-Source code in djitellopy/tello.py
-send_read_command(self, command)
-Send set command to Tello and wait for its response. Internal method, you normally wouldn't call this yourself.
-
-Source code in djitellopy/tello.py
-set_mission_pad_detection_direction(self, x)
-Set mission pad detection direction. enable_mission_pads needs to be called first. When detecting both directions detecting frequency is 10Hz, otherwise the detection frequency is 20Hz.
-
-Parameters:
-
-Name	Type	Description	Default
-x		
-0 downwards only, 1 forwards only, 2 both directions
-
-required
-Source code in djitellopy/tello.py
-set_speed(self, x)
-Set speed to x cm/s.
-
-Parameters:
-
-Name	Type	Description	Default
-x	int	
-10-100
-
-required
-Source code in djitellopy/tello.py
 set_wifi_credentials(self, ssid, password)
 Set the Wi-Fi SSID and password. The Tello will reboot afterwords.
 
