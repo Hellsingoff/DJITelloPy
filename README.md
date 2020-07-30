@@ -1255,9 +1255,20 @@ ____
 
 SDK 2.0 предоставляет дополнительный функционал:
 * Работа с Mission Pad:
-    * тест
-
-А так же больше полей в запросах
+    * [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid)
+    * [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads)
+    * [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads)
+    * [get_mission_pad_distance_x()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_x)
+    * [get_mission_pad_distance_y()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_y)
+    * [get_mission_pad_distance_z()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_z)
+    * [get_mission_pad_id()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_id)
+    * [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid)
+    * [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2)
+* Подключение к локальной сети:
+    * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password)
+* Дополнительные поля для данных обнаруженного Mission Pad:
+    * [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state)
+    * [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey)
 
 Возвращает str.
 ```python
@@ -1267,11 +1278,7 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 
-drone.takeoff() # взлет
-
-print(drone.query_height()) # выводит время полета
-
-drone.land() # приземление
+print(drone.query_sdk_version()) # выводит версию SDK
 
 drone.end() # удаляет drone
 ```
