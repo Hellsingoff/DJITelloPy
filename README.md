@@ -1249,11 +1249,11 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_sdk_version()
-Запрашивает у дрона версию поддерживаемого набора команд.
+Запрашивает у дрона версию поддерживаемого набора команд. (TODO Ryze check)
 
 Версия 1.3 соответствует Tello Ryze, а версия 2.0 - Tello EDU.
 
-SDK 2.0 предоставляет дополнительный функционал:
+SDK 2.0 предоставляет дополнительный функционал: (TODO sn? sdk? stop)
 * Работа с Mission Pad:
     * [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid)
     * [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads)
@@ -1284,7 +1284,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_serial_number()
-Запрашивает у дрона его серийный номер.
+Запрашивает у дрона его серийный номер. (TODO Ryze check)
 
 Возвращает str.
 ```python
@@ -1397,7 +1397,6 @@ ____
 Каждая команда из набора SDK реализована в данной библиотеке.
 
 Общие для Ryze (SDK 1.3) и EDU (SDK 2.0) команды:
-
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
 |:-------------:|:--------------------:|--------------------|
 | acceleration? |  | [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) |
@@ -1407,7 +1406,7 @@ ____
 | battery? |  | [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) |
 | ccw x | x: int 1-3600 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
 | command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
-| curve x1 y1 z1 x2 y2 z2 speed | x1: -500 - 500<br>y1: -500 -500<br>z1: -500 - 500<br>x2: -500 - 500<br>y2: -500 -500<br>z2: -500 - 500<br>speed: 10 - 60<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) |
+| curve x1 y1 z1 x2 y2 z2 speed | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) |
 | cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
 | down x | x: int 20-500 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
 | emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
@@ -1425,6 +1424,7 @@ ____
 | speed? |  | [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) |
 | streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
 | streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
+| stop | (TODO check) | [???](https://github.com/Hellsingoff/DJITelloPy#) |
 | takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
 | temp? |  | [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) |
 | time? |  | [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) |
@@ -1432,6 +1432,17 @@ ____
 | up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
 | wifi ssid pass | ssid: str<br>pass: str | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
 | wifi?  |  | [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) |
+
+Команды, добавленные в SDK 2.0 (Tello EDU):
+| Команда в SDK | Допустимые аргументы | Метод в библиотеке |
+|:-------------:|:--------------------:|--------------------|
+| ap ssid pass | ssid: str<br>pass: str | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
+| curve x1 y1 z1 x2 y2 z2 speed mid | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) |
+| go x y z speed mid | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) |
+| jump x y z speed yaw mid1 mid2 | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid1: int 1 - 8<br>mid2: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) |
+| mdirection x | x: 0, 1, 2 | [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) |
+| moff |  | [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) |
+| mon |  | [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) |
 ____
 
 
