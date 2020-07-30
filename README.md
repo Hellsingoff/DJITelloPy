@@ -855,7 +855,7 @@ ____
 
 Хотя бы одна из координат x y z должна быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
-Допустимые значения аргументов:
+Допустимые значения аргументов: (TODO check negative)
 | Аргумент | Данные | Допустимые значения |
 |:----------:|:------------------:|:--------:|
 | x | int (сантиметры) | -500 - 500 |
@@ -1406,16 +1406,17 @@ ____
 | streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
 | streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
 | emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
-| up x | 19 < x (int) < 501 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
-| down x | 19 < x (int) < 501 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
-| left x | 19 < x (int) < 501 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
-| right x | 19 < x (int) < 501 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
-| forward x | 19 < x (int) < 501 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
-| back x | 19 < x (int) < 501 | [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) |
-| cw x | 0 < x < 3601 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
-| ccw x | 0 < x < 3601 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
-|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+| up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
+| down x | x: int 20-500 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
+| left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
+| right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
+| forward x | x: int 20-500 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
+| back x | x: int 20-500 | [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) |
+| cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
+| ccw x | x: int 1-3600 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
+| flip x | 'f', 'b', 'l', 'r' | [flip(x)](https://github.com/Hellsingoff/DJITelloPy#flipx) |
+| go x y z speed | (TODO check negative)
+x:  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
 |  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
