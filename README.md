@@ -1400,6 +1400,30 @@ ____
 
 | Команда в SDK | Аргументы команды | Метод в библиотеке |
 |:-------------:|:-----------------:|--------------------|
+| command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
+| takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
+| land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
+| streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
+| streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
+| emergency | (TODO response check) | [](https://github.com/Hellsingoff/DJITelloPy#emergency) |
+| up x | 19 < x (int) < 501 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_up) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+|  |  | [](https://github.com/Hellsingoff/DJITelloPy#) |
+
 ____
 
 
