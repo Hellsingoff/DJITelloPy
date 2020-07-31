@@ -185,6 +185,8 @@ ____
 #### curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)
 Полёт по дуге (части окружности) относительно Mission pad (коврика).
 
+Передней камерой можно определить Mission Pad, но любые команды передвижения работают только относительно Mission Pad определенных нижней камерой.
+
 Команда поддерживается только в Tello EDU.
 
 Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
@@ -933,7 +935,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### go_xyz_speed_mid(x, y, z, speed, mid)
-Полёт в координаты x y z относительно Mission Pad mid со скоростью speed сантиметров в секунду. (TODO check speed)
+Полёт в координаты x y z относительно Mission Pad mid со скоростью speed сантиметров в секунду.
+
+Передней камерой можно определить Mission Pad, но любые команды передвижения работают только относительно Mission Pad определенных нижней камерой.
 
 Команда поддерживается только в Tello EDU.
 
@@ -970,7 +974,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)
-Полёт в координаты x y z относительно Mission Pad mid1 со скоростью speed сантиметров в секунду. В точке x y z производится поиск Mission Pad mid2 и дрон поворачивается на угол yaw относительно направления mid2. (TODO check speed)
+Полёт в координаты x y z относительно Mission Pad mid1 со скоростью speed сантиметров в секунду. В точке x y z производится поиск Mission Pad mid2 и дрон поворачивается на угол yaw относительно направления mid2.
+
+Передней камерой можно определить Mission Pad, но любые команды передвижения работают только относительно Mission Pad определенных нижней камерой.
 
 Команда поддерживается только в Tello EDU.
 
@@ -1526,7 +1532,7 @@ ____
 Команды, добавленные в SDK 2.0 (Tello EDU):
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
 |:-------------:|:--------------------:|--------------------|
-| ap ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
+| ap ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) |
 | curve x1 y1 z1 x2 y2 z2 speed mid | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) |
 | go x y z speed mid | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) |
 | jump x y z speed yaw mid1 mid2 | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid1: int 1 - 8<br>mid2: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) |
@@ -1619,6 +1625,8 @@ ____
 ____
 #### set_mission_pad_detection_direction(x)
 Настройка направления поиска Mission Pad.
+
+Передней камерой можно определить Mission Pad, но любые команды передвижения работают только относительно Mission Pad определенных нижней камерой.
 
 Команда поддерживается только в Tello EDU.
 
