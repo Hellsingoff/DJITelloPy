@@ -1,3 +1,54 @@
+## Навигация
+* [DJITelloPy](https://github.com/Hellsingoff/DJITelloPy#djitellopy) - о библиотеке.
+    * [Tello](https://github.com/Hellsingoff/DJITelloPy#tello) - управление одним дроном.
+        * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
+        * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi.
+        * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+        * []() - 
+    * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - (TODO)
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
 
@@ -5,9 +56,7 @@ DJITelloPy - библиотека для Python 3.5 и выше, реализу�
 ```
 pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 ```
-## Использование
-
-### Управление одним дроном
+## Tello
 
 **Tello** - класс, реализующий управление одним дроном.
 
@@ -1677,7 +1726,7 @@ ____
 
 * **Damià Fuentes Escoté**
 * **Jakob Löw**
-* [and more](https://github.com/damiafuentes/DJITelloPy/graphs/contributors)
+* [и другие](https://github.com/damiafuentes/DJITelloPy/graphs/contributors)
 ____
 ## Лицензия
 
