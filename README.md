@@ -45,7 +45,7 @@ ____
 
 После выполнения команды дрон перезагрузится и подключится к указанной сети.
 
-Дрон запоминает настройку и всегда будет подключаться к этой сети. Для сброса настроек Wi-Fi надо включить дрон и пять секунд держать кнопку питания (до перезагрузки).
+Для сброса настроек Wi-Fi надо включить дрон и пять секунд держать кнопку питания (до перезагрузки).
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -513,6 +513,8 @@ drone.streamon() # активация стрима камеры
 drone_camera = drone.get_frame_read() # получаем объект доступа к камере
 
 cv2.imwrite("picture.png", drone_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
+
+drone.streamoff() # отключение стрима
 
 drone.end() # удаляет drone
 ```
@@ -1505,7 +1507,7 @@ ____
 | y | int | -100 - 100 |
 | x | int | -100 - 100 |
 | z | int | -100 - 100 |
-| z_yaw | int | -100 - 100 |
+| yaw_z | int | -100 - 100 |
 
 Команда отправляется каждые TIME_BTW_RC_CONTROL_COMMANDS секунд. (TODO link and code)
 ```python
@@ -1580,52 +1582,103 @@ drone.land() # приземление
 drone.end() # удаляет drone
 ```
 (TODO check code)
+____
+#### set_wifi_credentials(ssid, password)
+Изменение имени и пароля создаваемой дроном точки доступа Wi-Fi.
 
+Первый аргумент - имя сети (строка), второй аргумент - её пароль (строка).
 
+После выполнения команды дрон перезагрузится.
 
+Для сброса настроек Wi-Fi надо включить дрон и пять секунд держать кнопку питания (до перезагрузки).
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
 
+drone = Tello() # дрон по адресу 192.168.10.1, мы подключились к создаваемой дроном точке доступа.
 
+drone.connect() # подключение к дрону
 
+drone.set_wifi_credentials('example', 'pass') # дрон перезагрузится и создаст точку example с паролем pass
+```
+____
+#### streamoff()
+Отключает прямой доступ к камере дрона.
+```python
+import cv2 # импорт библиотеки компьютерного зрения для работы с камерой
 
+from djitellopy import Tello # импорт класса управления одним дроном
 
+drone = Tello() # дрон по адресу 192.168.10.1
 
+drone.connect() # подключение
 
+drone.streamon() # активация стрима камеры
 
+drone_camera = drone.get_frame_read() # получаем объект доступа к камере
 
+cv2.imwrite("picture.png", drone_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
 
-set_wifi_credentials(self, ssid, password)
-Set the Wi-Fi SSID and password. The Tello will reboot afterwords.
+drone.streamoff() # отключение стрима
 
-Source code in djitellopy/tello.py
-streamoff(self)
-Turn off video streaming.
+drone.end() # удаляет drone
+```
+____
+#### streamon()
+Включает прямой доступ к камере дрона. (TODO check on WiFi)
 
-Source code in djitellopy/tello.py
-streamon(self)
-Turn on video streaming. Use tello.get_frame_read afterwards. Video Streaming is supported on all tellos when in AP mode (i.e. when your computer is connected to Tello-XXXXXX WiFi ntwork). Currently Tello EDUs do not support video streaming while connected to a wifi network.
+Позволяет получить в дальнейшем изображение с камеры.
+```python
+import cv2 # импорт библиотеки компьютерного зрения для работы с камерой
 
-Note
+from djitellopy import Tello # импорт класса управления одним дроном
 
-If the response is 'Unknown command' you have to update the Tello firmware. This can be done using the official Tello app.
+drone = Tello() # дрон по адресу 192.168.10.1
 
-Source code in djitellopy/tello.py
-takeoff(self)
-Automatic takeoff
+drone.connect() # подключение
 
-Source code in djitellopy/tello.py
-udp_response_receiver() staticmethod
-Setup drone UDP receiver. This method listens for responses of Tello. Must be run from a background thread in order to not block the main thread. Internal method, you normally wouldn't call this yourself.
+drone.streamon() # активация стрима камеры
 
-Source code in djitellopy/tello.py
-udp_state_receiver() staticmethod
-Setup state UDP receiver. This method listens for state information from Tello. Must be run from a background thread in order to not block the main thread. Internal method, you normally wouldn't call this yourself.
+drone_camera = drone.get_frame_read() # получаем объект доступа к камере
 
-## Authors
+cv2.imwrite("picture.png", drone_camera.frame) # получить изображение с камеры и сохранить в файл picture.png
+
+drone.streamoff() # отключение стрима
+
+drone.end() # удаляет drone
+```
+____
+#### takeoff()
+Автоматический взлёт и выравнивание дрона.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### udp_response_receiver()
+Статический метод для получения от дрона ответов на команды.
+
+Это внутренний метод библиотеки, он Вам не нужен.
+____
+#### udp_state_receiver()
+Статический метод для получения от дрона информации о его текущем состоянии.
+
+Это внутренний метод библиотеки, он Вам не нужен.
+____
+## Авторы
 
 * **Damià Fuentes Escoté**
 * **Jakob Löw**
 * [and more](https://github.com/damiafuentes/DJITelloPy/graphs/contributors)
+____
+## Лицензия
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details
+Эта библиотека распространяется под лицензией MIT. Для деталей можете изучить [LICENSE.txt](LICENSE.txt).
