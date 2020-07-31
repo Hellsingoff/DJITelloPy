@@ -4,50 +4,81 @@
         * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
         * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi.
         * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
-        * []() - 
+        * [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) - 
+        * [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) - 
+        * [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) - 
+        * [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) - 
+        * [end()](https://github.com/Hellsingoff/DJITelloPy#end) - 
+        * [flip(direction)](https://github.com/Hellsingoff/DJITelloPy#flipdirection) - 
+        * [flip_back()](https://github.com/Hellsingoff/DJITelloPy#flip_back) - 
+        * [flip_forward()](https://github.com/Hellsingoff/DJITelloPy#flip_forward) - 
+        * [flip_left()](https://github.com/Hellsingoff/DJITelloPy#flip_left) - 
+        * [flip_right()](https://github.com/Hellsingoff/DJITelloPy#flip_right) - 
+        * [get_acceleration_x()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_x) - 
+        * [get_acceleration_y()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_y) - 
+        * [get_acceleration_z()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_z) - 
+        * [get_barometer()](https://github.com/Hellsingoff/DJITelloPy#get_barometer) - 
+        * [get_battery()](https://github.com/Hellsingoff/DJITelloPy#get_battery) - 
+        * [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state) - 
+        * [get_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#get_distance_tof) - 
+        * [get_flight_time()](https://github.com/Hellsingoff/DJITelloPy#get_flight_time) - 
+        * [get_frame_read()](https://github.com/Hellsingoff/DJITelloPy#get_frame_read) - 
+        * [get_height()](https://github.com/Hellsingoff/DJITelloPy#get_height) - 
+        * [get_highest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_highest_temperature) - 
+        * [get_lowest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_lowest_temperature) - 
+        * [get_mission_pad_distance_x()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_x) - 
+        * [get_mission_pad_distance_y()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_y) - 
+        * [get_mission_pad_distance_z()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_z) - 
+        * [get_mission_pad_id()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_id) - 
+        * [get_pitch()](https://github.com/Hellsingoff/DJITelloPy#get_pitch) - 
+        * [get_roll()](https://github.com/Hellsingoff/DJITelloPy#get_roll) - 
+        * [get_speed_x()](https://github.com/Hellsingoff/DJITelloPy#get_speed_x) - 
+        * [get_speed_y()](https://github.com/Hellsingoff/DJITelloPy#get_speed_y) - 
+        * [get_speed_z()](https://github.com/Hellsingoff/DJITelloPy#get_speed_z) - 
+        * [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey) - 
+        * [get_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_temperature) - 
+        * [get_udp_video_address()](https://github.com/Hellsingoff/DJITelloPy#get_udp_video_address) - 
+        * [get_video_capture()](https://github.com/Hellsingoff/DJITelloPy#get_video_capture) - 
+        * [get_yaw()](https://github.com/Hellsingoff/DJITelloPy#get_yaw) - 
+        * [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) - 
+        * [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) - 
+        * [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) - 
+        * [land()](https://github.com/Hellsingoff/DJITelloPy#land) - 
+        * [move(direction, x)](https://github.com/Hellsingoff/DJITelloPy#movedirection-x) - 
+        * [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) - 
+        * [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) - 
+        * [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) - 
+        * [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) - 
+        * [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) - 
+        * [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) - 
+        * [parse_state(state)](https://github.com/Hellsingoff/DJITelloPy#parse_statestate) - 
+        * [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) - 
+        * [query_barometer()](https://github.com/Hellsingoff/DJITelloPy#query_barometer) - 
+        * [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) - 
+        * [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) - 
+        * [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) - 
+        * [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) - 
+        * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) - 
+        * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) - 
+        * [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) - 
+        * [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) - 
+        * [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) - 
+        * [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) - 
+        * [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) - 
+        * [send_command_with_return(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_command_with_returncommand-timeoutresponse_timeout) - 
+        * [send_command_without_return(command)](https://github.com/Hellsingoff/DJITelloPy#send_command_without_returncommand) - 
+        * [send_control_command(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_control_commandcommand-timeoutresponse_timeout) - 
+        * [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) - 
+        * [send_read_command(command)](https://github.com/Hellsingoff/DJITelloPy#send_read_commandcommand) - 
+        * [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) - 
+        * [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) - 
+        * [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) - 
+        * [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) - 
+        * [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) - 
+        * [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) - 
+        * [udp_response_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_response_receiver) - 
+        * [udp_state_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_state_receiver) - 
+        * [fields TODO]() - поля.
     * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - (TODO)
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
