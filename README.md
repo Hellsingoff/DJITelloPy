@@ -33,82 +33,82 @@ drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 ### Методы, применимые к объекту класса Tello
 ____
 * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
-* [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi.
+* [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi. (Только Tello EDU)
 * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
-* [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) - 
-* [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) - 
-* [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) - 
-* [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) - 
-* [end()](https://github.com/Hellsingoff/DJITelloPy#end) - 
-* [flip(direction)](https://github.com/Hellsingoff/DJITelloPy#flipdirection) - 
-* [flip_back()](https://github.com/Hellsingoff/DJITelloPy#flip_back) - 
-* [flip_forward()](https://github.com/Hellsingoff/DJITelloPy#flip_forward) - 
-* [flip_left()](https://github.com/Hellsingoff/DJITelloPy#flip_left) - 
-* [flip_right()](https://github.com/Hellsingoff/DJITelloPy#flip_right) - 
-* [get_acceleration_x()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_x) - 
-* [get_acceleration_y()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_y) - 
-* [get_acceleration_z()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_z) - 
-* [get_barometer()](https://github.com/Hellsingoff/DJITelloPy#get_barometer) - 
-* [get_battery()](https://github.com/Hellsingoff/DJITelloPy#get_battery) - 
-* [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state) - 
-* [get_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#get_distance_tof) - 
-* [get_flight_time()](https://github.com/Hellsingoff/DJITelloPy#get_flight_time) - 
-* [get_frame_read()](https://github.com/Hellsingoff/DJITelloPy#get_frame_read) - 
-* [get_height()](https://github.com/Hellsingoff/DJITelloPy#get_height) - 
-* [get_highest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_highest_temperature) - 
-* [get_lowest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_lowest_temperature) - 
-* [get_mission_pad_distance_x()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_x) - 
-* [get_mission_pad_distance_y()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_y) - 
-* [get_mission_pad_distance_z()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_z) - 
-* [get_mission_pad_id()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_id) - 
-* [get_pitch()](https://github.com/Hellsingoff/DJITelloPy#get_pitch) - 
-* [get_roll()](https://github.com/Hellsingoff/DJITelloPy#get_roll) - 
-* [get_speed_x()](https://github.com/Hellsingoff/DJITelloPy#get_speed_x) - 
-* [get_speed_y()](https://github.com/Hellsingoff/DJITelloPy#get_speed_y) - 
-* [get_speed_z()](https://github.com/Hellsingoff/DJITelloPy#get_speed_z) - 
-* [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey) - 
-* [get_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_temperature) - 
-* [get_udp_video_address()](https://github.com/Hellsingoff/DJITelloPy#get_udp_video_address) - 
-* [get_video_capture()](https://github.com/Hellsingoff/DJITelloPy#get_video_capture) - 
-* [get_yaw()](https://github.com/Hellsingoff/DJITelloPy#get_yaw) - 
-* [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) - 
-* [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) - 
-* [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) - 
-* [land()](https://github.com/Hellsingoff/DJITelloPy#land) - 
-* [move(direction, x)](https://github.com/Hellsingoff/DJITelloPy#movedirection-x) - 
-* [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) - 
-* [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) - 
-* [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) - 
-* [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) - 
-* [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) - 
-* [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) - 
-* [parse_state(state)](https://github.com/Hellsingoff/DJITelloPy#parse_statestate) - 
-* [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) - 
-* [query_barometer()](https://github.com/Hellsingoff/DJITelloPy#query_barometer) - 
-* [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) - 
-* [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) - 
-* [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) - 
-* [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) - 
-* [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) - 
-* [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) - 
-* [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) - 
-* [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) - 
-* [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) - 
-* [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) - 
-* [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) - 
-* [send_command_with_return(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_command_with_returncommand-timeoutresponse_timeout) - 
-* [send_command_without_return(command)](https://github.com/Hellsingoff/DJITelloPy#send_command_without_returncommand) - 
-* [send_control_command(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_control_commandcommand-timeoutresponse_timeout) - 
-* [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) - 
-* [send_read_command(command)](https://github.com/Hellsingoff/DJITelloPy#send_read_commandcommand) - 
-* [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) - 
-* [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) - 
-* [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) - 
-* [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) - 
-* [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) - 
-* [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) - 
-* [udp_response_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_response_receiver) - 
-* [udp_state_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_state_receiver) - 
+* [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) - полет по дуге относительно Mission Pad. (Только Tello EDU)
+* [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) - отключить поиск Mission Pad. (Только Tello EDU)
+* [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) - экстренная остановка двигателей.
+* [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) - включить поиск Mission Pad. (Только Tello EDU)
+* [end()](https://github.com/Hellsingoff/DJITelloPy#end) - удалить объект.
+* [flip(direction)](https://github.com/Hellsingoff/DJITelloPy#flipdirection) - кувырок.
+* [flip_back()](https://github.com/Hellsingoff/DJITelloPy#flip_back) - кувырок назад.
+* [flip_forward()](https://github.com/Hellsingoff/DJITelloPy#flip_forward) - кувырок вперед.
+* [flip_left()](https://github.com/Hellsingoff/DJITelloPy#flip_left) - кувырок влево.
+* [flip_right()](https://github.com/Hellsingoff/DJITelloPy#flip_right) - кувырок вправо.
+* [get_acceleration_x()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_x) - показания акселерометра по X.
+* [get_acceleration_y()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_y) - показания акселерометра по Y.
+* [get_acceleration_z()](https://github.com/Hellsingoff/DJITelloPy#get_acceleration_z) - показания акселерометра по Z.
+* [get_barometer()](https://github.com/Hellsingoff/DJITelloPy#get_barometer) - показания альтиметра.
+* [get_battery()](https://github.com/Hellsingoff/DJITelloPy#get_battery) - уровень заряда аккумулятора.
+* [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state) - показатели всех датчиков дрона.
+* [get_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#get_distance_tof) - дистанция до препятствия снизу.
+* [get_flight_time()](https://github.com/Hellsingoff/DJITelloPy#get_flight_time) - время работы моторов.
+* [get_frame_read()](https://github.com/Hellsingoff/DJITelloPy#get_frame_read) - доступ к передней камере.
+* [get_height()](https://github.com/Hellsingoff/DJITelloPy#get_height) - высота по координатной оси.
+* [get_highest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_highest_temperature) - наивысшая температура.
+* [get_lowest_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_lowest_temperature) - самая низкая температура.
+* [get_mission_pad_distance_x()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_x) - расстояние до Mission Pad по X. (Только Tello EDU)
+* [get_mission_pad_distance_y()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_y) - расстояние до Mission Pad по Y. (Только Tello EDU)
+* [get_mission_pad_distance_z()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_distance_z) - расстояние до Mission Pad по Z. (Только Tello EDU)
+* [get_mission_pad_id()](https://github.com/Hellsingoff/DJITelloPy#get_mission_pad_id) - ID определенного Mission Pad. (Только Tello EDU)
+* [get_pitch()](https://github.com/Hellsingoff/DJITelloPy#get_pitch) - угол наклона по X.
+* [get_roll()](https://github.com/Hellsingoff/DJITelloPy#get_roll) - угол наклона по Y.
+* [get_speed_x()](https://github.com/Hellsingoff/DJITelloPy#get_speed_x) - скорость по X.
+* [get_speed_y()](https://github.com/Hellsingoff/DJITelloPy#get_speed_y) - скорость по Y.
+* [get_speed_z()](https://github.com/Hellsingoff/DJITelloPy#get_speed_z) - скорость по Z.
+* [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey) - считать определенные данные дрона.
+* [get_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_temperature) - средняя температура дрона.
+* [get_udp_video_address()](https://github.com/Hellsingoff/DJITelloPy#get_udp_video_address) - получить UDP адрес видео. (Внутренний метод библиотеки)
+* [get_video_capture()](https://github.com/Hellsingoff/DJITelloPy#get_video_capture) - получить объект VideoCapture. (Внутренний метод библиотеки)
+* [get_yaw()](https://github.com/Hellsingoff/DJITelloPy#get_yaw) - угол поворота относительно Z.
+* [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) - полет в относительные координаты.
+* [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) - полет относительно Mission Pad. (Только Tello EDU)
+* [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) - полет от одного Mission Pad до другого и поворот на относительный угол.
+* [land()](https://github.com/Hellsingoff/DJITelloPy#land) - приземление.
+* [move(direction, x)](https://github.com/Hellsingoff/DJITelloPy#movedirection-x) - полет по направлению.
+* [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) - полет назад.
+* [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) - полет вниз.
+* [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) - полет вперед.
+* [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) - полет влево.
+* [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) - полет вправо.
+* [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) - полет вверх.
+* [parse_state(state)](https://github.com/Hellsingoff/DJITelloPy#parse_statestate) - статический обработчик получаемой от дрона информации. (Внутренний метод библиотеки)
+* [query_attitude()](https://github.com/Hellsingoff/DJITelloPy#query_attitude) - углы наклона.
+* [query_barometer()](https://github.com/Hellsingoff/DJITelloPy#query_barometer) - показания альтиметра.
+* [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) - уровень заряда аккумулятора.
+* [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) - дистанция до препятствия снизу.
+* [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) - время работы моторов.
+* [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) - высота по координатной оси.
+* [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) - версия поддерживаемого SDK. (Только Tello EDU)
+* [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) - серийный номер дрона. (Только Tello EDU)
+* [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) - текущая настройка скорости.
+* [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) - температура дрона.
+* [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) - уровень приема сигнала.
+* [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) - поворот по часовой стрелке.
+* [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) - поворот против часовой стрелки.
+* [send_command_with_return(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_command_with_returncommand-timeoutresponse_timeout) - отправить команду и ждать ответ.
+* [send_command_without_return(command)](https://github.com/Hellsingoff/DJITelloPy#send_command_without_returncommand) - отправить команду и не ждать ответ.
+* [send_control_command(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_control_commandcommand-timeoutresponse_timeout) - отправить команду управления дроном. (Внутренний метод библиотеки)
+* [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) - прямое управление направлением полета.
+* [send_read_command(command)](https://github.com/Hellsingoff/DJITelloPy#send_read_commandcommand) - запрос данных дрона. (Внутренний метод библиотеки)
+* [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) - направление поиска Mission Pad. (Только Tello EDU)
+* [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) - настройка скорости полета.
+* [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) - настройка точки доступа Wi-Fi.
+* [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) - выключить стрим видео.
+* [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) - включить стрим видео.
+* [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) - взлет.
+* [udp_response_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_response_receiver) - обработчик ответов от дрона. (Внутренний метод библиотеки)
+* [udp_state_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_state_receiver) - обработчик показаний датчиков дрона. (Внутренний метод библиотеки)
 ____
 #### connect()
 Вход в режим управления командами.
@@ -469,9 +469,11 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_barometer()
-Запросить у дрона показания встроенного барометра. (TODO единицы измерения)
+Запросить у дрона показания встроенного альтиметра.
 
-Возвращает int.
+Показания не очень точные.
+
+Возвращает float - глобальную высоту в сантиметрах.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -479,7 +481,7 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 
-print(drone.get_barometer()) # выводит показания барометра
+print(drone.get_barometer()) # выводит показания альтиметра
 
 drone.end() # удаляет drone
 ```
@@ -512,16 +514,16 @@ ____
 | vgx | int (см/с) | Скорость по X |
 | vgy | int (см/с) | Скорость по Y |
 | vgz | int (см/с) | Скорость по Z |
-| templ | int (°C) | Самая низкая температура с момента включения дрона |
-| temph | int (°C) | Самая высокая температура с момента включения дрона |
+| templ | int (°C) | Самая низкая, на данный момент, температура дрона |
+| temph | int (°C) | Самая высокая, на данный момент, температура дрона |
 | tof | int (сантиметры) | Показатель датчика расстояния до препятствия снизу |
 | h | int (сантиметры) | Высота относительно координатной оси |
 | bat | int (проценты) | Уровень заряда аккумулятора |
-| baro | int (TODO) | Показания барометра |
+| baro | float (сантиметры) | Показания альтиметра |
 | time | int (секунды) | Время полёта с последнего взлёта |
-| agx | float (TODO) | Ускорение по X |
-| agy | float (TODO) | Ускорение по Y |
-| agz | float (TODO) | Ускорение по Z |
+| agx | float | Данные акселерометра по оси X |
+| agy | float | Данные акселерометра по оси Y |
+| agz | float | Данные акселерометра по оси Z |
 | mid | int (номер) | ID найденного Mission Pad.<br>Поддерживается только в Tello EDU. |
 | x | int (сантиметры) | Расстояние до найденного Mission Pad по оси X относительно дрона.<br>Поддерживается только в Tello EDU. |
 | y | int (сантиметры) | Расстояние до найденного Mission Pad по оси Y относительно дрона.<br>Поддерживается только в Tello EDU. |
@@ -582,7 +584,7 @@ ____
 #### get_frame_read()
 Получить объект BackgroundFrameRead для подключения к камере дрона. (TODO check on WiFi)
 
-Предварительно необходимо включить стрим камеры командой streamon() (TODO)
+Предварительно необходимо включить стрим камеры командой [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon)
 
 Позволяет получить в дальнейшем изображение с камеры.
 
@@ -624,7 +626,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_highest_temperature()
-Запросить наивысшую, с момента включения, температуру дрона в °C.
+Запросить наивысшую, на данный момент, температуру дрона в °C.
 
 Возвращает int.
 ```python
@@ -640,7 +642,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_lowest_temperature()
-Запросить наименьшую, с момента включения, температуру дрона в °C.
+Запросить наименьшую, на данный момент, температуру дрона в °C.
 
 Возвращает int.
 ```python
@@ -829,16 +831,16 @@ ____
 | vgx | int (см/с) | Скорость по X |
 | vgy | int (см/с) | Скорость по Y |
 | vgz | int (см/с) | Скорость по Z |
-| templ | int (°C) | Самая низкая температура с момента включения дрона |
-| temph | int (°C) | Самая высокая температура с момента включения дрона |
+| templ | int (°C) | Самая низкая, на данный момент, температура дрона |
+| temph | int (°C) | Самая высокая, на данный момент, температура дрона |
 | tof | int (сантиметры) | Показатель датчика расстояния до препятствия снизу |
 | h | int (сантиметры) | Высота относительно координатной оси |
 | bat | int (проценты) | Уровень заряда аккумулятора |
-| baro | int (TODO) | Показания барометра |
+| baro | float (сантиметры) | Показания альтиметра |
 | time | int (секунды) | Время полёта с последнего взлёта |
-| agx | float (TODO) | Ускорение по X |
-| agy | float (TODO) | Ускорение по Y |
-| agz | float (TODO) | Ускорение по Z |
+| agx | float | Данные акселерометра по оси X |
+| agy | float | Данные акселерометра по оси Y |
+| agz | float | Данные акселерометра по оси Z |
 | mid | int (номер) | ID найденного Mission Pad.<br>Поддерживается только в Tello EDU. |
 | x | int (сантиметры) | Расстояние до найденного Mission Pad по оси X относительно дрона.<br>Поддерживается только в Tello EDU. |
 | y | int (сантиметры) | Расстояние до найденного Mission Pad по оси Y относительно дрона.<br>Поддерживается только в Tello EDU. |
@@ -857,7 +859,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_temperature()
-Запросить у дрона среднюю температуру (не текущую) в °C.
+Запросить у дрона его среднюю температуру в °C.
 
 Фактически является средним между минимальным и максимальным значением.
 
@@ -905,7 +907,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### go_xyz_speed(x, y, z, speed)
-Полёт в координаты x y z со скоростью speed сантиметров в секунду. (TODO check speed)
+Полёт в координаты x y z со скоростью speed сантиметров в секунду.
 
 За начало осей координат (0 0 0) берется текущее местоположение дрона. (TODO check z)
 
@@ -1243,11 +1245,13 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_barometer()
-Запрашивает у дрона показания встроенного барометра. (TODO единицы измерения)
+Запросить у дрона показания встроенного альтиметра.
 
 Работает медленнее запроса [get_barometer()](https://github.com/Hellsingoff/DJITelloPy#get_barometer), предоставляющего те же данные.
 
-Возвращает int.
+Показания не очень точные.
+
+Возвращает float - глобальную высоту в сантиметрах.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1255,7 +1259,7 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 
-print(drone.query_barometer()) # выводит показания барометра
+print(drone.query_barometer()) # выводит показания альтиметра
 
 drone.end() # удаляет drone
 ```
@@ -1345,11 +1349,11 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_sdk_version()
-Запрашивает у дрона версию поддерживаемого набора команд. (TODO Ryze check)
+Запрашивает у дрона версию поддерживаемого набора команд.
 
-Версия 1.3 соответствует Tello Ryze, а версия 2.0 - Tello EDU.
+Работает только на Tello EDU.
 
-SDK 2.0 предоставляет дополнительный функционал: (TODO sn? sdk? stop)
+SDK 2.0 предоставляет дополнительный функционал:
 * Работа с Mission Pad:
     * [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid)
     * [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads)
@@ -1365,6 +1369,10 @@ SDK 2.0 предоставляет дополнительный функцион
 * Дополнительные поля для данных обнаруженного Mission Pad:
     * [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state)
     * [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey)
+* Дополнительные команды:
+    * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version)
+    * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number)
+    * (TODO stop)
 
 Возвращает str.
 ```python
@@ -1380,7 +1388,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_serial_number()
-Запрашивает у дрона его серийный номер. (TODO Ryze check)
+Запрашивает у дрона его серийный номер.
+
+Работает только на Tello EDU.
 
 Возвращает str.
 ```python
@@ -1412,9 +1422,11 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_temperature()
-Запрашивает у дрона его текущую температуру. (TODO check vs get)
+Запрашивает у дрона его текущую температуру в особом формате 'min~maxC'. (TODO check EDU)
 
-Возвращает int.
+Работает медленнее схожего метода [get_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_temperature).
+
+Возвращает str.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1430,7 +1442,7 @@ ____
 #### query_wifi_signal_noise_ratio()
 Запрашивает у дрона текущее качество WiFi соединения. (TODO check ap vs client mode)
 
-Возвращает str. (TODO check lesser is better)
+Возвращает int.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1490,7 +1502,7 @@ ____
 
 Обязательный - строка с командой. Необязательный - время ожидания ответа в секундах (int).
 
-Каждая команда из набора SDK реализована в данной библиотеке. (TODO stop)
+Каждая команда из набора SDK реализована в данной библиотеке.
 
 Общие для Ryze (SDK 1.3) и EDU (SDK 2.0) команды:
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
@@ -1512,21 +1524,18 @@ ____
 | height? |  | [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) |
 | land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
 | left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
-| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br>(TODO check response) | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br>(TODO check response) | [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
 | right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
-| sdk? | (TODO check) | [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) |
-| sn? | (TODO check) | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
-| speed x | x: 10 - 100 | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| speed x | x: 10 - 100 | [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) |
 | speed? |  | [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) |
 | streamoff |  | [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) |
 | streamon |  | [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) |
-| stop | (TODO check) | [???](https://github.com/Hellsingoff/DJITelloPy#) |
 | takeoff |  | [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) |
 | temp? |  | [query_temperature()](https://github.com/Hellsingoff/DJITelloPy#query_temperature) |
 | time? |  | [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) |
 | tof? |  | [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) |
 | up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
-| wifi ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [TODO](https://github.com/Hellsingoff/DJITelloPy#) |
+| wifi ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) |
 | wifi?  |  | [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) |
 
 Команды, добавленные в SDK 2.0 (Tello EDU):
@@ -1539,6 +1548,9 @@ ____
 | mdirection x | x: 0, 1, 2 | [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) |
 | moff |  | [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) |
 | mon |  | [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) |
+| sdk? |  | [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) |
+| sn? |  | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
+| stop | (TODO) | [???](https://github.com/Hellsingoff/DJITelloPy#) |
 
 Время ожидания ответа по умолчанию хранится в поле RESPONSE_TIMEOUT класса Tello.
 
@@ -1666,7 +1678,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### set_speed(x)
-Настройка скорости полета дрона в сантиметрах в секунду по умолчанию. (TODO check after reboot)
+Настройка скорости полета дрона в сантиметрах в секунду по умолчанию.
+
+По умолчанию максимальна. После перезагрузки сбрасывается.
 
 Аргумент - целое число от 10 до 100.
 ```python
