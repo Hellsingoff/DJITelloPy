@@ -1,10 +1,13 @@
 * [DJITelloPy](https://github.com/Hellsingoff/DJITelloPy#djitellopy) - о библиотеке.
     * [Tello](https://github.com/Hellsingoff/DJITelloPy#tello) - управление одним дроном.
-        * [Методы, применимые к объекту класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8%D0%BC%D1%8B%D0%B5-%D0%BA-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%83-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
+        * [Методы класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
         * [Поля класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
-    * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - (TODO)
-        * Методы (TODO)
+        * Примеры (TODO)
+    * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - управление роем.
+        * [Методы класса TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-telloswarm)
+        * [Применение к TelloSwarm методов Tello]()
         * Поля (TODO)
+        * Примеры (TODO)
     * [Авторы](https://github.com/Hellsingoff/DJITelloPy#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%8B)
     * [Лицензия](https://github.com/Hellsingoff/DJITelloPy#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F)
 
@@ -30,7 +33,7 @@ drone1 = Tello() # дрон по адресу 192.168.10.1
 drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 ```
 ____
-### Методы, применимые к объекту класса Tello
+### Методы класса Tello
 * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
 * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi. (Только Tello EDU)
 * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
@@ -1821,7 +1824,7 @@ ____
 ____
 ## TelloSwarm
 
-**TelloSwarm** - класс, реализующий управление роем дронов.
+**TelloSwarm** - класс, реализующий управление несколькими дронами, путем объединения их в "рой".
 
 IP адреса дронов передаются массивом или через файл при инициализации класса роя.
 ```python
@@ -1839,7 +1842,11 @@ swarm2 = TelloSwarm.fromFile('ip.txt'))
 ```
 Единственный простой, но не единственный существующий, способ объединить несколько дронов в рой - подключить несколько Tello EDU к одной локальной сети по Wi-Fi с помощью команды [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) и узнать какие IP они получили. Для Ryze этот метод не подходит.
 ____
-### Методы, применимые к объекту класса Tello
+### Методы класса TelloSwarm
+TODO
+____
+### Применение к TelloSwarm методов Tello
+TODO
 ____
 ## Авторы
 * **Damià Fuentes Escoté**
