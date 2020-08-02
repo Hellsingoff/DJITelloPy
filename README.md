@@ -29,9 +29,8 @@ drone1 = Tello() # дрон по адресу 192.168.10.1
 
 drone2 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
 ```
-
-### Методы, применимые к объекту класса Tello
 ____
+### Методы, применимые к объекту класса Tello
 * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
 * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi. (Только Tello EDU)
 * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
@@ -1819,6 +1818,28 @@ ____
 | TIME_BTW_RC_CONTROL_COMMANDS | int/float | Минимальное время ожидания между [RC командами](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
 | VS_UDP_IP | str | IP видео стрима |
 | VS_UDP_PORT | int | Порт видео стрима |
+____
+## TelloSwarm
+
+**TelloSwarm** - класс, реализующий управление роем дронов.
+
+IP адреса дронов передаются массивом или через файл при инициализации класса роя.
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm1 = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+# инициализация роя, передача IP файлом
+swarm2 = TelloSwarm.fromFile('ip.txt'))
+# файл должен содержать список IP адресов построчно
+```
+Единственный простой, но не единственный существующий, способ объединить несколько дронов в рой - подключить несколько Tello EDU к одной локальной сети по Wi-Fi с помощью команды [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) и узнать какие IP они получили. Для Ryze этот метод не подходит.
+____
+### Методы, применимые к объекту класса Tello
 ____
 ## Авторы
 * **Damià Fuentes Escoté**
