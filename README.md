@@ -1,7 +1,7 @@
 * [DJITelloPy](https://github.com/Hellsingoff/DJITelloPy#djitellopy) - о библиотеке.
     * [Tello](https://github.com/Hellsingoff/DJITelloPy#tello) - управление одним дроном.
         * [Методы, применимые к объекту класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8%D0%BC%D1%8B%D0%B5-%D0%BA-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D1%83-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
-        * Поля класса Tello (TODO)
+        * [Поля класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
     * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - (TODO)
         * Методы (TODO)
         * Поля (TODO)
@@ -1497,7 +1497,7 @@ drone.land() # приземление
 drone.end() # удаляет drone
 ```
 ____
-#### send_command_with_return(command, timeout=RESPONSE_TIMEOUT) (TODO response link)
+#### send_command_with_return(command, timeout=[RESPONSE_TIMEOUT](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello))
 Выполнение дроном команды из SDK с ожиданием ответа.
 
 Принимает один обязательный и один необязательный аргументы.
@@ -1554,7 +1554,9 @@ ____
 | sn? |  | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
 | stop | (TODO) | [???](https://github.com/Hellsingoff/DJITelloPy#) |
 
-Время ожидания ответа по умолчанию хранится в поле RESPONSE_TIMEOUT класса Tello.
+Время ожидания ответа по умолчанию хранится в поле [RESPONSE_TIMEOUT](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello).
+
+В случае отсутствия ответа выполняется [RETRY_COUNT](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) попыток отправки команды.
 
 Возвращает str при успешном выполнении и False при ошибке.
 ```python
@@ -1799,29 +1801,29 @@ ____
 ### Поля класса Tello
 | Имя поля | Данные | Назначение |
 |:--------:|:------:|:----------:|
+| address | tuple | IP и порт дрона |
+| background_frame_read | BackgroundFrameRead | Захват видео |
+| cap | VideoCapture | Стрим видео |
 | CONTROL_UDP_PORT | int | Порт для отправки команд и получения ответов |
+| FORMATTER<br>HANDLER<br>LOGGER |  | Система логирования |
+| is_flying | boolean | Статус полета |
+| last_rc_control_timestamp | float | Время получения предыдущей [RC команды](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
+| last_received_command_timestamp | float | Время получения предыдущей команды |
 | RESPONSE_TIMEOUT | int/float | Время ожидания ответа от дрона |
 | RETRY_COUNT | int | Количество попыток отправить команду |
+| state_field_converters | dict | Словарь для парсинга данных о состоянии дрона |
 | STATE_UDP_PORT | int | Порт для получения данных от дрона |
+| stream_on | boolean | Статус стрима видео |
 | TELLO_IP | str | IP дрона по умолчанию при инициализации |
 | TIME_BTW_COMMANDS | int/float | Минимальное время ожидания между командами |
 | TIME_BTW_RC_CONTROL_COMMANDS | int/float | Минимальное время ожидания между [RC командами](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
 | VS_UDP_IP | str | IP видео стрима |
 | VS_UDP_PORT | int | Порт видео стрима |
-| FORMATTER<br>HANDLER<br>LOGGER |  | Система логирования |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+____
 ## Авторы
-
 * **Damià Fuentes Escoté**
 * **Jakob Löw**
 * [и другие](https://github.com/damiafuentes/DJITelloPy/graphs/contributors)
 ____
 ## Лицензия
-
 Эта библиотека распространяется под лицензией MIT. Для деталей можете изучить [LICENSE.txt](LICENSE.txt).
