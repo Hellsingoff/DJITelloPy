@@ -1796,6 +1796,26 @@ ____
 
 Это внутренний метод библиотеки, он Вам не нужен.
 ____
+### Поля класса Tello
+| Имя поля | Данные | Назначение |
+|:--------:|:------:|:----------:|
+| CONTROL_UDP_PORT | int | Порт для отправки команд и получения ответов |
+| RESPONSE_TIMEOUT | int/float | Время ожидания ответа от дрона |
+| RETRY_COUNT | int | Количество попыток отправить команду |
+| STATE_UDP_PORT | int | Порт для получения данных от дрона |
+| TELLO_IP | str | IP дрона по умолчанию при инициализации |
+| TIME_BTW_COMMANDS | int/float | Минимальное время ожидания между командами |
+| TIME_BTW_RC_CONTROL_COMMANDS | int/float | Минимальное время ожидания между [RC командами](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
+| VS_UDP_IP | str | IP видео стрима |
+| VS_UDP_PORT | int | Порт видео стрима |
+| FORMATTER<br>HANDLER<br>LOGGER |  | Система логирования |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
+|  |  |  |
 ## Авторы
 
 * **Damià Fuentes Escoté**
