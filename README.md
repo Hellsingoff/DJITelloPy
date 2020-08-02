@@ -1606,7 +1606,7 @@ ____
 
 Это внутренний метод библиотеки, его лучше не использовать без необходимости.
 ____
-#### send_control_command(command, timeout=RESPONSE_TIMEOUT) (TODO response link)
+#### send_control_command(command, timeout=[RESPONSE_TIMEOUT](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello))
 Выполнение дроном команды из SDK с ожиданием ответа.
 
 Принимает один обязательный и один необязательный аргументы.
@@ -1628,7 +1628,7 @@ ____
 | z | int | -100 - 100 |
 | yaw_z | int | -100 - 100 |
 
-Команда отправляется каждые TIME_BTW_RC_CONTROL_COMMANDS секунд. (TODO link and code)
+Команда отправляется каждые [TIME_BTW_RC_CONTROL_COMMANDS](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) секунд. (TODO code)
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
