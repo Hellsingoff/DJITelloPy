@@ -23,7 +23,7 @@ pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 **Tello** - класс, реализующий управление одним дроном.
 ____
 ### Методы класса Tello
-* [\_\_init\_\_(host=TELLO_IP, retry_count=RETRY_COUNT)]() - инициализация объекта класса Tello.
+* [\_\_init\_\_(host=TELLO_IP, retry_count=RETRY_COUNT)](https://github.com/Hellsingoff/DJITelloPy#__init__hosttello_ip-retry_countretry_count) - инициализация объекта класса Tello.
 * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
 * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi. (Только Tello EDU)
 * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
@@ -1834,25 +1834,25 @@ ____
 
 **TelloSwarm** - класс, реализующий управление несколькими дронами, путем объединения их в "рой".
 
-IP адреса дронов передаются массивом или через файл при инициализации класса роя.
-```python
-from djitellopy import TelloSwarm # импорт класса управления роем
-
-# инициализация роя, передача IP массивом
-swarm1 = TelloSwarm.fromIps([
-    "192.168.1.245",
-    "192.168.1.220"
-])
-
-# инициализация роя, передача IP файлом
-swarm2 = TelloSwarm.fromFile('ip.txt'))
-# файл должен содержать список IP адресов построчно
-```
 Единственный простой, но не единственный существующий, способ объединить несколько дронов в рой - подключить несколько Tello EDU к одной локальной сети по Wi-Fi с помощью команды [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) и узнать какие IP они получили. Рекомендуется закрепить статические IP адреса за мак адресами дронов в настройках Wi-Fi роутера чтобы они были постоянными. Для Ryze этот метод не подходит.
 ____
 ### Методы класса TelloSwarm
+\_\_init\_\_(list) - инициализация роя.
 fromFile(path) - чтение IP из файла.
 fromIps(ips) - создание роя передачей массива IP адресов.
+____
+#### \_\_init\_\_(list)
+Прямая инициализация роя, принимает массив объектов [Tello](https://github.com/Hellsingoff/DJITelloPy#tello).
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone1 = Tello('192.168.1.220') # дрон по адресу 192.168.1.220
+
+drone2 = Tello('192.168.1.245') # дрон по адресу 192.168.1.245
+
+swarm = TelloSwarm([drone1, drone2]) # создание роя из двух дронов выше
+```
+Это допустимый метод инициализации роя, но, скорее всего, удобнее будет использовать [fromFile(path)])() или [fromIps(ips)])(). TODO links
 ____
 #### fromFile(path)
 Статический метод для чтения IP адресов из файла построчно.
