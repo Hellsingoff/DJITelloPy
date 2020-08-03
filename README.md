@@ -23,7 +23,7 @@ pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
 **Tello** - класс, реализующий управление одним дроном.
 ____
 ### Методы класса Tello
-* [__init__(host=TELLO_IP, retry_count=RETRY_COUNT)]() - инициализация объекта класса Tello.
+* [\_\_init\_\_(host=TELLO_IP, retry_count=RETRY_COUNT)]() - инициализация объекта класса Tello.
 * [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) - подключение к дрону.
 * [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) - подключение к Wi-Fi. (Только Tello EDU)
 * [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) - полёт по дуге.
@@ -102,7 +102,7 @@ ____
 * [udp_response_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_response_receiver) - обработчик ответов от дрона. (Внутренний метод библиотеки)
 * [udp_state_receiver()](https://github.com/Hellsingoff/DJITelloPy#udp_state_receiver) - обработчик показаний датчиков дрона. (Внутренний метод библиотеки)
 ____
-#### __init__(host=TELLO_IP, retry_count=RETRY_COUNT)
+#### \_\_init\_\_(host=TELLO_IP, retry_count=RETRY_COUNT)
 Инициализация объекта класса Tello.
 
 По умолчанию инициализация не трует аргументов, при этом IP дрона используется стандартный - 192.168.10.1, как при подключении к дрону по Wi-Fi. 
