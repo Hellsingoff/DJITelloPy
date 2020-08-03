@@ -1850,10 +1850,10 @@ ____
 Единственный простой, но не единственный существующий, способ объединить несколько дронов в рой - подключить несколько Tello EDU к одной локальной сети по Wi-Fi с помощью команды [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) и узнать какие IP они получили. Рекомендуется закрепить статические IP адреса за мак адресами дронов в настройках Wi-Fi роутера чтобы они были постоянными. Для Ryze этот метод не подходит.
 ____
 ### Методы класса TelloSwarm
+* [\_\_getattr\_\_(attr)](https://github.com/Hellsingoff/DJITelloPy#__getattr__attr) - применение к рою [методов](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello).
 * [\_\_init\_\_(list)](https://github.com/Hellsingoff/DJITelloPy#__init__list) - инициализация роя.
 * [\_\_iter\_\_()](https://github.com/Hellsingoff/DJITelloPy#__iter__) - итератор роя.
 * [\_\_len\_\_()](https://github.com/Hellsingoff/DJITelloPy#__len__) - размер роя.
-* [\_\_getattr\_\_(attr)](https://github.com/Hellsingoff/DJITelloPy#__getattr__attr) - применение к рою [методов](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello).
 * [fromFile(path)](https://github.com/Hellsingoff/DJITelloPy#fromfilepath) - чтение IP из файла.
 * [fromIps(ips)](https://github.com/Hellsingoff/DJITelloPy#fromipsips) - создание роя передачей массива IP адресов.
 * [parallel(func)](https://github.com/Hellsingoff/DJITelloPy#parallelfunc) - параллельное выполнение функции роем.
