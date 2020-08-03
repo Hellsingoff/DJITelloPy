@@ -1858,6 +1858,7 @@ ____
 * [fromIps(ips)](https://github.com/Hellsingoff/DJITelloPy#fromipsips) - создание роя передачей массива IP адресов.
 * [parallel(func)](https://github.com/Hellsingoff/DJITelloPy#parallelfunc) - параллельное выполнение функции роем.
 * [sequential(func)](https://github.com/Hellsingoff/DJITelloPy#sequentialfunc) - последовательное выполнение функции роем.
+* [sync(timeout=None)](https://github.com/Hellsingoff/DJITelloPy#synctimeoutnone) - синхронизация при параллельном выполнении.
 ____
 #### \_\_getattr\_\_(attr)
 Метод, позволяющий применять к рою [методы](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello). (TODO)
@@ -2053,7 +2054,7 @@ ____
 #### sync(timeout=None)
 Метод синхронизации потоков при параллельном выполнении роем функции.
 
-Принимает один аргумент. (TODO)
+Принимает один необязательный аргумент. (TODO)
 ```python
 from djitellopy import TelloSwarm # импорт класса управления роем
 
