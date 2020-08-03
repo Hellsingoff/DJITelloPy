@@ -205,7 +205,7 @@ ____
 
 Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду, иначе - выводит ошибку и приземляется.
 
-Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0). (TODO check)
+Обе координаты указываются в сантиметрах относительно положения Mission Pad, то есть Mission Pad считается точкой начала координатных осей (0 0 0).
 
 Движение по оси X - вперед (куда указывает ракета). По оси Y - влево относительно ракеты. По оси Z - вверх от Mission Pad.
 
@@ -298,7 +298,11 @@ drone.end() # удаляет drone
 ```
 ____
 #### end()
-Завершение работы с дроном, удаляет объект дрона из памяти.
+Завершение работы с дроном. 
+
+Если дрон в воздухе - он приземляется. Так же отключается стрим видео.
+
+Удаляет объект дрона из памяти.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -308,9 +312,7 @@ drone.connect() # подключение
 
 drone.takeoff() # взлёт
 
-drone.land() # приземление
-
-drone.end() # удаляет drone
+drone.end() # приземление, удаляет drone
 ```
 ____
 #### flip(direction)
@@ -420,7 +422,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_acceleration_x()
-Запросить информацию об ускорении по оси X.
+Запросить показания акселерометра по оси X.
 
 Возвращает float.
 ```python
@@ -441,7 +443,7 @@ drone.end() # удаляет drone
 ____
 #### get_acceleration_y()
 
-Запросить информацию об ускорении по оси Y.
+Запросить показания акселерометра по оси Y.
 
 Возвращает float.
 ```python
@@ -461,7 +463,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_acceleration_z()
-Запросить информацию об ускорении по оси Z.
+Запросить показания акселерометра по оси Z.
 
 Возвращает float.
 ```python
@@ -594,7 +596,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### get_frame_read()
-Получить объект BackgroundFrameRead для подключения к камере дрона. (TODO check on WiFi)
+Получить объект BackgroundFrameRead для подключения к камере дрона.
+
+Доступ к стриму можно получить только напрямую подключившись к дрону, режим подключения к локальной сети по Wi-Fi делает невозможным обращение по адресу видео потока дрона.
 
 Предварительно необходимо включить стрим камеры командой [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon)
 
@@ -921,7 +925,7 @@ ____
 #### go_xyz_speed(x, y, z, speed)
 Полёт в координаты x y z со скоростью speed сантиметров в секунду.
 
-За начало осей координат (0 0 0) берется текущее местоположение дрона. (TODO check z)
+За начало осей координат (0 0 0) берется текущее местоположение дрона.
 
 Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
@@ -963,7 +967,7 @@ ____
 
 Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
-Допустимые значения аргументов: (TODO check negative)
+Допустимые значения аргументов:
 | Аргумент | Данные | Допустимые значения |
 |:----------:|:------------------:|:--------:|
 | x | int (сантиметры) | -500 - 500 |
@@ -994,7 +998,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-За начало осей координат (0 0 0) берется Mission Pad mid1. (TODO check coord)
+За начало осей координат (0 0 0) берется Mission Pad mid1.
 
 Если Mission Pad с ID mid1 не обнаружен - выводит ошибку и приземляется.
 
@@ -1434,7 +1438,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_temperature()
-Запрашивает у дрона его текущую температуру в особом формате 'min~maxC'. (TODO check EDU)
+Запрашивает у дрона его текущую температуру в особом формате 'min~maxC'.
 
 Работает медленнее схожего метода [get_temperature()](https://github.com/Hellsingoff/DJITelloPy#get_temperature).
 
@@ -1452,7 +1456,9 @@ drone.end() # удаляет drone
 ```
 ____
 #### query_wifi_signal_noise_ratio()
-Запрашивает у дрона текущее качество WiFi соединения. (TODO check ap vs client mode)
+Запрашивает у дрона уровень помех Wi-Fi соединения.
+
+Не работает в режиме подключения дрона к локальной сети по Wi-Fi.
 
 Возвращает int.
 ```python
@@ -1470,7 +1476,7 @@ ____
 #### rotate_clockwise(x)
 Поворот дрона по часовой стрелке на угол x.
 
-Аргумент - целое число от 1 до 3600. (TODO check ryze edu 0 negative 360+ 3600+)
+Аргумент - int.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1490,7 +1496,7 @@ ____
 #### rotate_counter_clockwise(x)
 Поворот дрона против часовой стрелки на угол x.
 
-Аргумент - целое число от 1 до 3600. (TODO check ryze edu 0 negative 360+ 3600+)
+Аргумент - int
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1524,19 +1530,19 @@ ____
 | back x | x: int 20-500 | [move_back(x)](https://github.com/Hellsingoff/DJITelloPy#move_backx) |
 | baro? |  | [query_barometer()](https://github.com/Hellsingoff/DJITelloPy#query_barometer) |
 | battery? |  | [query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery) |
-| ccw x | x: int 1-3600 (TODO check) | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
+| ccw x | x: int | [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) |
 | command |  | [connect()](https://github.com/Hellsingoff/DJITelloPy#connect) |
 | curve x1 y1 z1 x2 y2 z2 speed | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed(x1, y1, z1, x2, y2, z2, speed)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speedx1-y1-z1-x2-y2-z2-speed) |
-| cw x | x: int 1-3600 (TODO check) | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
+| cw x | x: int | [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) |
 | down x | x: int 20-500 | [move_down(x)](https://github.com/Hellsingoff/DJITelloPy#move_downx) |
-| emergency | (TODO response check) | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
+| emergency |  | [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) |
 | flip x | 'f', 'b', 'l', 'r' | [flip(x)](https://github.com/Hellsingoff/DJITelloPy#flipx) |
 | forward x | x: int 20-500 | [move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx) |
-| go x y z speed | (TODO check negative)<br>x: -500 - 500<br>y: -500 -500<br>z: -500 - 500<br>speed: 10 - 100<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) |
+| go x y z speed | <br>x: -500 - 500<br>y: -500 -500<br>z: -500 - 500<br>speed: 10 - 100<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed(x, y, z, speed)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speedx-y-z-speed) |
 | height? |  | [query_height()](https://github.com/Hellsingoff/DJITelloPy#query_height) |
 | land  |  | [land()](https://github.com/Hellsingoff/DJITelloPy#land) |
 | left x | x: int 20-500 | [move_left(x)](https://github.com/Hellsingoff/DJITelloPy#move_leftx) |
-| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br>(TODO check response) | [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
+| rc y x z d | y: -100 - 100<br>x: -100 - 100<br>z: -100 - 100<br>d: -100 - 100<br> | [send_rc_control(y, x, z, yaw_z)](https://github.com/Hellsingoff/DJITelloPy#send_rc_controly-x-z-yaw_z) |
 | right x | x: int 20-500 | [move_right(x)](https://github.com/Hellsingoff/DJITelloPy#move_rightx) |
 | speed x | x: 10 - 100 | [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) |
 | speed? |  | [query_speed()](https://github.com/Hellsingoff/DJITelloPy#query_speed) |
@@ -1547,16 +1553,16 @@ ____
 | time? |  | [query_flight_time()](https://github.com/Hellsingoff/DJITelloPy#query_flight_time) |
 | tof? |  | [query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) |
 | up x | x: int 20-500 | [move_up(x)](https://github.com/Hellsingoff/DJITelloPy#move_upx) |
-| wifi ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) |
+| wifi ssid pass | ssid: str<br>pass: str<br> | [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) |
 | wifi?  |  | [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) |
 
 Команды, добавленные в SDK 2.0 (Tello EDU):
 | Команда в SDK | Допустимые аргументы | Метод в библиотеке |
 |:-------------:|:--------------------:|--------------------|
-| ap ssid pass | ssid: str<br>pass: str<br>(TODO check response) | [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) |
+| ap ssid pass | ssid: str<br>pass: str<br> | [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) |
 | curve x1 y1 z1 x2 y2 z2 speed mid | x1: int -500 - 500<br>y1: int -500 -500<br>z1: int -500 - 500<br>x2: int -500 - 500<br>y2: int -500 -500<br>z2: int -500 - 500<br>speed: int 10 - 60<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x1/y1/z1 и x2/y2/z2 должен быть больше 20.<br>Точки 0 0 0, x1 y1 z1 и x2 y2 z2 должны находиться на одной окружности радиусом от 0.5 до 10 метров. | [curve_xyz_speed_mid(x1, y1, z1, x2, y2, z2, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#curve_xyz_speed_midx1-y1-z1-x2-y2-z2-speed-mid) |
-| go x y z speed mid | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) |
-| jump x y z speed yaw mid1 mid2 | (TODO check negative)<br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid1: int 1 - 8<br>mid2: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) |
+| go x y z speed mid | <br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_mid(x, y, z, speed, mid)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_midx-y-z-speed-mid) |
+| jump x y z speed yaw mid1 mid2 | <br>x: int -500 - 500<br>y: int -500 -500<br>z: int -500 - 500<br>speed: int 10 - 100<br>mid1: int 1 - 8<br>mid2: int 1 - 8<br>Модуль хотя бы одной из переменных x/y/z должен быть больше 20. | [go_xyz_speed_yaw_mid(x, y, z, speed, yaw, mid1, mid2)](https://github.com/Hellsingoff/DJITelloPy#go_xyz_speed_yaw_midx-y-z-speed-yaw-mid1-mid2) |
 | mdirection x | x: 0, 1, 2 | [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) |
 | moff |  | [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) |
 | mon |  | [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) |
@@ -1638,9 +1644,11 @@ ____
 | z | int | -100 - 100 |
 | yaw_z | int | -100 - 100 |
 
-Команда отправляется каждые [TIME_BTW_RC_CONTROL_COMMANDS](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) секунд. (TODO code)
+Команда отправляется каждые [TIME_BTW_RC_CONTROL_COMMANDS](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) секунд.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
+
+from time import time # импорт стандартной функции получения глобального времени
 
 drone = Tello() # дрон по адресу 192.168.10.1
 
@@ -1648,9 +1656,13 @@ drone.connect() # подключение
 
 drone.takeoff() # взлёт
 
-drone.land() # приземление
+start = time() # запомнить время начала выполнения цикла
 
-drone.end() # удаляет drone
+while time() - start < 3: # в течение 3 секунд после начала
+
+    drone.send_rc_control(0, 100, 0, 0) # лететь вперед с максимальным наклоном
+
+drone.end() # приземление, удаляет drone
 ```
 ____
 #### send_read_command(command)
@@ -1676,7 +1688,9 @@ ____
 | 1 | Используется только передняя камера, частота опроса 20 Hz. |
 | 2 | Используются обе камеры, частота опроса 10 Hz. |
 
-(TODO default val)
+По умолчанию активен поиск только через переднюю камеру.
+
+При перезапуске настройка сбрасывается.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -1714,7 +1728,6 @@ drone.land() # приземление
 
 drone.end() # удаляет drone
 ```
-(TODO check code)
 ____
 #### set_wifi_credentials(ssid, password)
 Изменение имени и пароля создаваемой дроном точки доступа Wi-Fi.
@@ -1759,7 +1772,7 @@ drone.end() # удаляет drone
 ```
 ____
 #### streamon()
-Включает прямой доступ к камере дрона. (TODO check on WiFi)
+Включает прямой доступ к камере дрона.
 
 Позволяет получить в дальнейшем изображение с камеры.
 ```python
@@ -1837,9 +1850,28 @@ ____
 Единственный простой, но не единственный существующий, способ объединить несколько дронов в рой - подключить несколько Tello EDU к одной локальной сети по Wi-Fi с помощью команды [connect_to_wifi(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#connect_to_wifissid-password) и узнать какие IP они получили. Рекомендуется закрепить статические IP адреса за мак адресами дронов в настройках Wi-Fi роутера чтобы они были постоянными. Для Ryze этот метод не подходит.
 ____
 ### Методы класса TelloSwarm
-\_\_init\_\_(list) - инициализация роя.
-fromFile(path) - чтение IP из файла.
-fromIps(ips) - создание роя передачей массива IP адресов.
+* [\_\_init\_\_(list)](https://github.com/Hellsingoff/DJITelloPy#__init__list) - инициализация роя.
+* [\_\_iter\_\_()](https://github.com/Hellsingoff/DJITelloPy#__iter__) - итератор роя.
+* [\_\_len\_\_()](https://github.com/Hellsingoff/DJITelloPy#__len__) - размер роя.
+* [\_\_getattr\_\_(attr)](https://github.com/Hellsingoff/DJITelloPy#__getattr__attr) - применение к рою [методов](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello).
+* [fromFile(path)](https://github.com/Hellsingoff/DJITelloPy#fromfilepath) - чтение IP из файла.
+* [fromIps(ips)](https://github.com/Hellsingoff/DJITelloPy#fromipsips) - создание роя передачей массива IP адресов.
+* [parallel(func)](https://github.com/Hellsingoff/DJITelloPy#parallelfunc) - параллельное выполнение функции роем.
+* [sequential(func)](https://github.com/Hellsingoff/DJITelloPy#sequentialfunc) - последовательное выполнение функции роем.
+____
+#### \_\_getattr\_\_(attr)
+Метод, позволяющий применять к рою [методы](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello). (TODO)
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+swarm.connect() # для каждого дрона параллельно вызывается connect() из класса Tello
+```
 ____
 #### \_\_init\_\_(list)
 Прямая инициализация роя, принимает массив объектов [Tello](https://github.com/Hellsingoff/DJITelloPy#tello).
@@ -1852,7 +1884,41 @@ drone2 = Tello('192.168.1.245') # дрон по адресу 192.168.1.245
 
 swarm = TelloSwarm([drone1, drone2]) # создание роя из двух дронов выше
 ```
-Это допустимый метод инициализации роя, но, скорее всего, удобнее будет использовать [fromFile(path)])() или [fromIps(ips)])(). TODO links
+Это допустимый метод инициализации роя, но, скорее всего, удобнее будет использовать [fromFile(path)])(https://github.com/Hellsingoff/DJITelloPy#fromfilepath) или [fromIps(ips)])(https://github.com/Hellsingoff/DJITelloPy#fromipsips).
+____
+#### \_\_iter\_\_()
+Итератор для перебора дронов в рое.
+
+Позволяет работать с роем с помощью for.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+for tello in swarm: # для каждого дрона в рое
+
+	print(tello.get_battery()) # вывести уровень заряда аккумулятора
+```
+____
+#### \_\_len\_\_()
+Метод, позволяющий узнать число дронов в рое.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+swarm = TelloSwarm([drone1, drone2]) # создание роя из двух дронов выше
+
+print(len(swarm)) # выведет 2
+```
 ____
 #### fromFile(path)
 Статический метод для чтения IP адресов из файла построчно.
@@ -1861,7 +1927,7 @@ ____
 
 При создании файла используйте кодировку UTF-8.
 
-Вызывает fromIps(ips) (TODO link) передав как аргумент полученный построчным чтением файла массив строк.
+Вызывает [fromIps(ips)](https://github.com/Hellsingoff/DJITelloPy#fromipsips) передав как аргумент полученный построчным чтением файла массив строк.
 ```python
 from djitellopy import TelloSwarm # импорт класса управления роем
 
@@ -1884,6 +1950,131 @@ swarm = TelloSwarm.fromIps([
     "192.168.1.245",
     "192.168.1.220"
 ])
+```
+____
+#### parallel(func)
+Одновременное выполнение роем функции func.
+
+Для каждого дрона создается отдельный поток.
+
+Принимает один аргумент - функцию. Указывается только имя функции без скобок и аргументов.
+
+Эта функция обязательно должна принимать два аргумента - индекс дрона в массиве роя (int) и объект дрона (Tello).
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+# объявляем функцию для выполнения
+def drones_logic(i, tello):
+    if i % 2:
+        tello.move_left(30 + 30*i)
+    else:
+        tello.move_right(30 + 30*i)
+
+swarm.parallel(drones_logic) # выполняем объявленную выше функцию параллельно
+
+# дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0 - четное число, а значит полетит на 30 + 0*30 = 30 см вправо
+# дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1 - нечетное число, а значит полетит на 30 + 1*30 = 60 см влево
+# дроны начнут полет одновременно, но, из-за разницы в дальности полета, прилетят в разное время
+# сколько бы ни было дронов в рое - четные и нечетные летят в разные стороны, а расстояние зависит от индекса
+```
+Есть возможность прописывать на выполнение lambda функцию вместо стандартной:
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+swarm.sequental(lambda i, tello: tello.move_left(30 + 30*i) if i % 2 else tello.move_right(30 + 30*i)) # выполняем lambda функцию параллельно
+
+# дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0 - четное число, а значит полетит на 30 + 0*30 = 30 см вправо
+# дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1 - нечетное число, а значит полетит на 30 + 1*30 = 60 см влево
+# дроны начнут полет одновременно, но, из-за разницы в дальности полета, прилетят в разное время
+# сколько бы ни было дронов в рое - четные и нечетные летят в разные стороны, а расстояние зависит от индекса
+```
+____
+#### sequential(func)
+Поочередное выполнение роем функции func.
+
+Следующий дрон начинает выполнение только когда предыдущий завершил выполнение.
+
+Принимает один аргумент - функцию. Указывается только имя функции без скобок и аргументов.
+
+Эта функция обязательно должна принимать два аргумента - индекс дрона в массиве роя (int) и объект дрона (Tello).
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+# объявляем функцию для выполнения
+def drones_logic(i, tello):
+    if i % 2:
+        tello.move_left(30 + 30*i)
+    else:
+        tello.move_right(30 + 30*i)
+
+swarm.sequental(drones_logic) # выполняем объявленную выше функцию последовательно
+
+# дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0 - четное число, а значит полетит на 30 + 0*30 = 30 см вправо
+# после получения от первого дрона ответа об успешном выполнении команды выполнение перейдёт ко второму дрону
+# дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1 - нечетное число, а значит полетит на 30 + 1*30 = 60 см влево
+# сколько бы ни было дронов в рое - четные и нечетные летят в разные стороны, а расстояние зависит от индекса
+```
+Есть возможность прописывать на выполнение lambda функцию вместо стандартной:
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+swarm.sequental(lambda i, tello: tello.move_left(30 + 30*i) if i % 2 else tello.move_right(30 + 30*i)) # выполняем lambda функцию последовательно
+
+# дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0 - четное число, а значит полетит на 30 + 0*30 = 30 см вправо
+# после получения от первого дрона ответа об успешном выполнении команды выполнение перейдёт ко второму дрону
+# дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1 - нечетное число, а значит полетит на 30 + 1*30 = 60 см влево
+# сколько бы ни было дронов в рое - четные и нечетные летят в разные стороны, а расстояние зависит от индекса
+```
+____
+#### sync(timeout=None)
+Метод синхронизации потоков при параллельном выполнении роем функции.
+
+Принимает один аргумент. (TODO)
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
+
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+# объявляем функцию для выполнения
+def drones_logic(i, tello):
+    for _ in range(3):
+        tello.move_forward(30 + 30*i)
+        swarm.sync()
+
+swarm.parallel(drones_logic) # выполняем объявленную выше функцию параллельно
+
+# дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0, а значит трижды полетит на 30 + 0*30 = 30 см вперед
+# дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1, а значит трижды полетит на 30 + 1*30 = 60 см вперед
+# дроны начнут полет одновременно, но, из-за разницы в дальности полета, каждая из трех итераций должна была увеличивать рассинхронизацию выполнения
+# но синхронизация на каждой итерации заставит дрон, завершивший итерацию раньше, ждать отстающего и последнюю итерацию они начнут так же одновременно
 ```
 ____
 ### Применение к TelloSwarm методов Tello
