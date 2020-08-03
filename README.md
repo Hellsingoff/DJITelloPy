@@ -1885,7 +1885,7 @@ drone2 = Tello('192.168.1.245') # дрон по адресу 192.168.1.245
 
 swarm = TelloSwarm([drone1, drone2]) # создание роя из двух дронов выше
 ```
-Это допустимый метод инициализации роя, но, скорее всего, удобнее будет использовать [fromFile(path)])(https://github.com/Hellsingoff/DJITelloPy#fromfilepath) или [fromIps(ips)])(https://github.com/Hellsingoff/DJITelloPy#fromipsips).
+Это допустимый метод инициализации роя, но, скорее всего, удобнее будет использовать [fromFile(path)](https://github.com/Hellsingoff/DJITelloPy#fromfilepath) или [fromIps(ips)](https://github.com/Hellsingoff/DJITelloPy#fromipsips).
 ____
 #### \_\_iter\_\_()
 Итератор для перебора дронов в рое.
