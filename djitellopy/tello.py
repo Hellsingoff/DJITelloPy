@@ -604,6 +604,14 @@ class Tello:
             x: 1-3600
         """
         return self.send_control_command("ccw " + str(x), timeout=x//65 + 5)
+    
+    def rotate_mid(self, yaw=0):
+        """Turn around Mission Pad
+        Tello EDU only
+        Arguments:
+            yaw: degree between drone and MP
+        """
+        self.rotate_clockwise((int(self.get_state_field('mpry').split(',')[1])+yaw) % 360)
 
     def flip(self, direction: str):
         """Do a flip maneuver.
