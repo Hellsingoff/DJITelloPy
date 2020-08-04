@@ -1902,7 +1902,7 @@ swarm = TelloSwarm.fromIps([
 
 for tello in swarm: # для каждого дрона в рое
 
-	print(tello.get_battery()) # вывести уровень заряда аккумулятора
+    print(tello.get_battery()) # вывести уровень заряда аккумулятора
 ```
 ____
 #### \_\_len\_\_()
