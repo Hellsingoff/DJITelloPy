@@ -6,7 +6,7 @@
     * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - управление роем.
         * [Методы класса TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-telloswarm)
         * [Применение к TelloSwarm методов Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-telloswarm-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2-tello)
-        * Поля (TODO)
+        * [Поля класса TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-telloswarm)
         * Примеры (TODO)
     * [Авторы](https://github.com/Hellsingoff/DJITelloPy#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%8B)
     * [Лицензия](https://github.com/Hellsingoff/DJITelloPy#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F)
@@ -1994,7 +1994,7 @@ swarm = TelloSwarm.fromIps([
     "192.168.1.220"
 ])
 
-swarm.sequental(lambda i, tello: tello.move_left(30 + 30*i) if i % 2 else tello.move_right(30 + 30*i)) # выполняем lambda функцию параллельно
+swarm.parallel(lambda i, tello: tello.move_left(30 + 30*i) if i % 2 else tello.move_right(30 + 30*i)) # выполняем lambda функцию параллельно
 
 # дрон по адресу 192.168.1.245 имеет в массиве роя индекс 0 - четное число, а значит полетит на 30 + 0*30 = 30 см вправо
 # дрон по адресу 192.168.1.220 имеет в массиве роя индекс 1 - нечетное число, а значит полетит на 30 + 1*30 = 60 см влево
@@ -2081,6 +2081,9 @@ ____
 ### Применение к TelloSwarm методов Tello
 TODO
 ____
+### Поля класса TelloSwarm
+TODO
+____
 ## Авторы
 * **Damià Fuentes Escoté**
 * **Jakob Löw**
@@ -2088,3 +2091,4 @@ ____
 ____
 ## Лицензия
 Эта библиотека распространяется под лицензией MIT. Для деталей можете изучить [LICENSE.txt](LICENSE.txt).
+
