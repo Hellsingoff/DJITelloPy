@@ -1384,10 +1384,9 @@ SDK 2.0 предоставляет дополнительный функцион
     * [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state)
     * [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey)
 * Дополнительные команды:
-    * [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
     * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version)
     * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number)
-
+    * [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
 Возвращает str.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
