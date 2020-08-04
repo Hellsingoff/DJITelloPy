@@ -530,7 +530,8 @@ class Tello:
     def emergency(self):
         """Stop all motors immediately.
         """
-        return self.send_control_command("emergency")
+        self.is_flying = False
+        self.send_command_without_return("emergency")
 
     def move(self, direction: str, x: int):
         """Tello fly up, down, left, right, forward or back with distance x cm.
