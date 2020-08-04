@@ -97,7 +97,7 @@ ____
 * [set_mission_pad_detection_direction(x)](https://github.com/Hellsingoff/DJITelloPy#set_mission_pad_detection_directionx) - направление поиска Mission Pad. (Только Tello EDU)
 * [set_speed(x)](https://github.com/Hellsingoff/DJITelloPy#set_speedx) - настройка скорости полета.
 * [set_wifi_credentials(ssid, password)](https://github.com/Hellsingoff/DJITelloPy#set_wifi_credentialsssid-password) - настройка точки доступа Wi-Fi.
-* [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
+* [stop()](https://github.com/Hellsingoff/DJITelloPy#stop) - остановка дрона.
 * [streamoff()](https://github.com/Hellsingoff/DJITelloPy#streamoff) - выключить стрим видео.
 * [streamon()](https://github.com/Hellsingoff/DJITelloPy#streamon) - включить стрим видео.
 * [takeoff()](https://github.com/Hellsingoff/DJITelloPy#takeoff) - взлет.
