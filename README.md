@@ -1387,6 +1387,7 @@ SDK 2.0 предоставляет дополнительный функцион
     * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version)
     * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number)
     * [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
+
 Возвращает str.
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
