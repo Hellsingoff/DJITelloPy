@@ -17,7 +17,7 @@ class Tello:
     [2.0 with EDU-only commands](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
     """
     # Send and receive commands, client socket
-    RESPONSE_TIMEOUT = 7  # in seconds
+    RESPONSE_TIMEOUT = 15  # in seconds
     TIME_BTW_COMMANDS = 0.1  # in seconds
     TIME_BTW_RC_CONTROL_COMMANDS = 0.001  # in seconds
     RETRY_COUNT = 3  # number of retries after a failed command
@@ -75,6 +75,7 @@ class Tello:
 
     stream_on = False
     is_flying = False
+    speed = 100
 
     def __init__(self,
                  host=TELLO_IP,
@@ -504,7 +505,7 @@ class Tello:
     def land(self):
         """Automatic land
         """
-        self.send_control_command("land")
+        self.send_control_command("land", timeout=20)
         self.is_flying = False
 
     def stop(self):
@@ -546,7 +547,7 @@ class Tello:
             direction: up, down, left, right, forward or back
             x: 20-500
         """
-        return self.send_control_command(direction + ' ' + str(x))
+        return self.send_control_command(direction + ' ' + str(x), timeout=x//self.speed + 5)
 
     def move_up(self, x: int):
         """Fly x cm up.
@@ -595,14 +596,14 @@ class Tello:
         Arguments:
             x: 1-360
         """
-        return self.send_control_command("cw " + str(x))
+        return self.send_control_command("cw " + str(x), timeout=x//65 + 5)
 
     def rotate_counter_clockwise(self, x: int):
         """Rotate x degree counter-clockwise.
         Arguments:
             x: 1-3600
         """
-        return self.send_control_command("ccw " + str(x))
+        return self.send_control_command("ccw " + str(x), timeout=x//65 + 5)
 
     def flip(self, direction: str):
         """Do a flip maneuver.
@@ -641,7 +642,8 @@ class Tello:
             z: 20-500
             speed: 10-100
         """
-        return self.send_control_command('go %s %s %s %s' % (x, y, z, speed))
+        return self.send_control_command('go %s %s %s %s' % (x, y, z, speed), 
+                                        timeout=((x**2 + y**2 + z**2)**0.5)//speed + 5)
 
     def curve_xyz_speed(self, x1: int, y1: int, z1: int, x2: int, y2: int, z2: int, speed: int):
         """Fly to x2 y2 z2 in a curve via x2 y2 z2. Speed defines the traveling speed in cm/s.
@@ -672,7 +674,8 @@ class Tello:
             speed: 10-100
             mid: 1-8
         """
-        return self.send_control_command('go %s %s %s %s m%s' % (x, y, z, speed, mid))
+        return self.send_control_command('go %s %s %s %s m%s' % (x, y, z, speed, mid), 
+                                        timeout=((x**2 + y**2 + z**2)**0.5)//speed + 5)
 
     def curve_xyz_speed_mid(self, x1: int, y1: int, z1: int, x2: int, y2: int, z2: int, speed: int, mid: int):
         """Fly to x2 y2 z2 in a curve via x2 y2 z2. Speed defines the traveling speed in cm/s.
@@ -707,7 +710,8 @@ class Tello:
             mid1: 1-8
             mid2: 1-8
         """
-        return self.send_control_command('jump %s %s %s %s %s m%s m%s' % (x, y, z, speed, yaw, mid1, mid2))
+        return self.send_control_command('jump %s %s %s %s %s m%s m%s' % (x, y, z, speed, yaw, mid1, mid2),
+                                        timeout=((x**2 + y**2 + z**2)**0.5)//speed + abs(yaw//65) + 5)
 
     def enable_mission_pads(self):
         """Enable mission pad detection
@@ -733,6 +737,8 @@ class Tello:
         Arguments:
             x: 10-100
         """
+        if 10 <= x <= 100:
+            self.speed = int(x)
         return self.send_control_command("speed " + str(x))
 
     def send_rc_control(self, left_right_velocity: int, forward_backward_velocity: int, up_down_velocity: int,
