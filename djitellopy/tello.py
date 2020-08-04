@@ -507,6 +507,12 @@ class Tello:
         self.send_control_command("land")
         self.is_flying = False
 
+    def stop(self):
+        """Stop moving and hover in place
+        Tello EDU only
+        """
+        return self.send_control_command('stop')
+
     def streamon(self):
         """Turn on video streaming. Use `tello.get_frame_read` afterwards.
         Video Streaming is supported on all tellos when in AP mode (i.e.
