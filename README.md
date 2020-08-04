@@ -1384,9 +1384,9 @@ SDK 2.0 предоставляет дополнительный функцион
     * [get_current_state()](https://github.com/Hellsingoff/DJITelloPy#get_current_state)
     * [get_state_field(key)](https://github.com/Hellsingoff/DJITelloPy#get_state_fieldkey)
 * Дополнительные команды:
+    * [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
     * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version)
     * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number)
-    * (TODO stop)
 
 Возвращает str.
 ```python
@@ -1566,7 +1566,7 @@ ____
 | mon |  | [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) |
 | sdk? |  | [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version) |
 | sn? |  | [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number) |
-| stop | (TODO) | [???](https://github.com/Hellsingoff/DJITelloPy#) |
+| stop |  | [stop()](https://github.com/Hellsingoff/DJITelloPy#stop) |
 
 Время ожидания ответа по умолчанию хранится в поле [RESPONSE_TIMEOUT](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello).
 
@@ -1745,6 +1745,26 @@ drone = Tello() # дрон по адресу 192.168.10.1, мы подключи
 drone.connect() # подключение к дрону
 
 drone.set_wifi_credentials('example', 'pass') # дрон перезагрузится и создаст точку example с паролем pass
+```
+____
+#### stop()
+Останавливает дрон на месте.
+
+Поддерживается только в Tello EDU.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.send_rc_control(0, 100, 0, 0) # наклон вперед
+
+drone.stop() # остановка на месте (может сохраниться иннерция)
+
+drone.end() # удаляет drone
 ```
 ____
 #### streamoff()
