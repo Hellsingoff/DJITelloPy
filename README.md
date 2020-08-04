@@ -31,7 +31,7 @@ ____
 * [disable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#disable_mission_pads) - отключить поиск Mission Pad. (Только Tello EDU)
 * [emergency()](https://github.com/Hellsingoff/DJITelloPy#emergency) - экстренная остановка двигателей.
 * [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads) - включить поиск Mission Pad. (Только Tello EDU)
-* [end()](https://github.com/Hellsingoff/DJITelloPy#end) - удалить объект.
+* [end()](https://github.com/Hellsingoff/DJITelloPy#end) - завершение работы с дроном.
 * [flip(direction)](https://github.com/Hellsingoff/DJITelloPy#flipdirection) - кувырок.
 * [flip_back()](https://github.com/Hellsingoff/DJITelloPy#flip_back) - кувырок назад.
 * [flip_forward()](https://github.com/Hellsingoff/DJITelloPy#flip_forward) - кувырок вперед.
