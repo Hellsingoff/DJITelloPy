@@ -88,6 +88,7 @@ ____
 * [query_wifi_signal_noise_ratio()](https://github.com/Hellsingoff/DJITelloPy#query_wifi_signal_noise_ratio) - уровень приема сигнала.
 * [rotate_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_clockwisex) - поворот по часовой стрелке.
 * [rotate_counter_clockwise(x)](https://github.com/Hellsingoff/DJITelloPy#rotate_counter_clockwisex) - поворот против часовой стрелки.
+* [rotate_mid(yaw=0)](https://github.com/Hellsingoff/DJITelloPy#rotate_midyaw0) - поворот относительно Mission Pad. (Только Tello EDU)
 * [send_command_with_return(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_command_with_returncommand-timeoutresponse_timeout) - отправить команду и ждать ответ.
 * [send_command_without_return(command)](https://github.com/Hellsingoff/DJITelloPy#send_command_without_returncommand) - отправить команду и не ждать ответ.
 * [send_control_command(command, timeout=RESPONSE_TIMEOUT)](https://github.com/Hellsingoff/DJITelloPy#send_control_commandcommand-timeoutresponse_timeout) - отправить команду управления дроном. (Внутренний метод библиотеки)
@@ -1386,6 +1387,7 @@ SDK 2.0 предоставляет дополнительный функцион
 * Дополнительные команды:
     * [query_sdk_version()](https://github.com/Hellsingoff/DJITelloPy#query_sdk_version)
     * [query_serial_number()](https://github.com/Hellsingoff/DJITelloPy#query_serial_number)
+    * [rotate_mid(yaw=0)](https://github.com/Hellsingoff/DJITelloPy#rotate_midyaw0)
     * [stop()](https://github.com/Hellsingoff/DJITelloPy#stop)
 
 Возвращает str.
@@ -1505,6 +1507,30 @@ drone.connect() # подключение
 drone.takeoff() # взлет
 
 drone.rotate_counter_clockwise(90) # поворот на 90 градусов против часовой стрелки
+
+drone.land() # приземление
+
+drone.end() # удаляет drone
+```
+____
+#### rotate_mid(yaw=0)
+Поворот дрона относительно Mission Pad.
+
+Поддерживается только в Tello EDU.
+
+Необязательный аргумент - угол между дроном и Mission Pad (int).
+
+По умолчанию угол равен нулю.
+```python
+from djitellopy import Tello # импорт класса управления одним дроном
+
+drone = Tello() # дрон по адресу 192.168.10.1
+
+drone.connect() # подключение
+
+drone.takeoff() # взлет
+
+drone.rotate_mid(90) # поворот на 90 градусов относительно Mission Pad
 
 drone.land() # приземление
 
