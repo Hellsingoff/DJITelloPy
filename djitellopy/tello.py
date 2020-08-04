@@ -5,6 +5,7 @@ import time
 import threading
 import cv2
 from threading import Thread
+import numpy as np
 
 drones = None
 client_socket = None
@@ -670,7 +671,19 @@ class Tello:
             z2: -500-500
             speed: 10-60
         """
-        return self.send_control_command('curve %s %s %s %s %s %s %s' % (x1, y1, z1, x2, y2, z2, speed))
+        try:
+            A = np.array([0, 0, 0])
+            B = np.array([x1, y1, z1])
+            C = np.array([x2, y2, z2])
+            a = np.linalg.norm(C - B)
+            b = np.linalg.norm(C - A)
+            c = np.linalg.norm(B - A)
+            s = (a + b + c) / 2
+            R = a*b*c / 4 / np.sqrt(s * (s - a) * (s - b) * (s - c))
+        except:
+            R = 250
+        finally:
+            return self.send_control_command('curve %s %s %s %s %s %s %s' % (x1, y1, z1, x2, y2, z2, speed), (R*3.14*2)//speed + 5)
 
     def go_xyz_speed_mid(self, x: int, y: int, z: int, speed: int, mid: int):
         """Fly to x y z relative to the mission pad with id mid.
@@ -703,7 +716,19 @@ class Tello:
             speed: 10-60
             mid: 1-8
         """
-        return self.send_control_command('curve %s %s %s %s %s %s %s m%s' % (x1, y1, z1, x2, y2, z2, speed, mid))
+        try:
+            A = np.array([0, 0, 0])
+            B = np.array([x1, y1, z1])
+            C = np.array([x2, y2, z2])
+            a = np.linalg.norm(C - B)
+            b = np.linalg.norm(C - A)
+            c = np.linalg.norm(B - A)
+            s = (a + b + c) / 2
+            R = a*b*c / 4 / np.sqrt(s * (s - a) * (s - b) * (s - c))
+        except:
+            R = 250
+        finally:
+            return self.send_control_command('curve %s %s %s %s %s %s %s m%s' % (x1, y1, z1, x2, y2, z2, speed, mid), (R*3.14*2)//speed + 5)
 
     def go_xyz_speed_yaw_mid(self, x: int, y: int, z: int, speed: int, yaw: int, mid1: int, mid2: int):
         """Fly to x y z relative to mid1.
