@@ -10,6 +10,13 @@
         * Примеры (TODO)
     * [Авторы](https://github.com/Hellsingoff/DJITelloPy#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%8B)
     * [Лицензия](https://github.com/Hellsingoff/DJITelloPy#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F)
+* [DJI Tello] - о дронах.
+    * [Комплектация]
+    * [Техника безопасности]
+    * [Хранение]
+    * [Mission Pad]
+    * [Установка Python, pip, DJITelloPy]
+    * [Объединение в рой]
 
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
@@ -2141,3 +2148,30 @@ ____
 ____
 ## Лицензия
 Эта библиотека распространяется под лицензией MIT. Для деталей можете изучить [LICENSE.txt](LICENSE.txt).
+____
+# [DJI Tello] - о дронах.
+TODO
+____
+## [Комплектация]
+TODO
+____
+## [Техника безопасности]
+TODO
+____
+## [Хранение]
+TODO
+____
+## [Mission Pad]
+В комплекте Tello EDU поставляются коврики с метками для их распознавания, "Mission Pad".
+
+SDK Tello EDU был расширен в том числе командами для работы с этими ковриками.
+
+![MP](images/MP.png)
+
+Каждый коврик 
+____
+## [Установка Python, pip, DJITelloPy]
+TODO
+____
+## [Объединение в рой]
+TODO
