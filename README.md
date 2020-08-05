@@ -20,11 +20,7 @@
 
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
-
-Установка через pip
-```
-pip3 install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip
-```
+____
 ## Tello
 
 **Tello** - класс, реализующий управление одним дроном.
@@ -2222,7 +2218,26 @@ SDK Tello EDU был расширен в том числе [командами](
 Так же, в учебных целях, не рекомендуется располагать несколько Mission Pad слишком близко друг к другу. Лучше сделать так, чтобы в область видимости дрона попадал только один коврик одновременно для однозначного понимания команд, т.е. соблюдать между ними дистанцию не менее половины метра.
 ____
 ## Установка Python и DJITelloPy
-TODO
+Для программирования дронов достаточно иметь только установленный Python, всё остальное можно написать самостоятельно.
+
+Но, для простоты, лучше использовать готовую библиотеку, такую как DJITelloPy.
+
+1) Необходимо скачать последний Python 3.x с официального сайта:
+
+![pydown](images/pydown.png)
+
+2) При установке отметить оба пункта в нижней части окна и нажать Install Now.
+
+![pyinstall](images/pyinstall.png)
+
+3) После установки Python нужно установить библиотеку DJITelloPy. Для этого в командной строке нужно выполнить:
+```py -m pip install https://github.com/Hellsingoff/DJITelloPy/archive/master.zip```
+
+![cmd](images/cmd.png)
+
+Об успешном завершении установки говорит сообщение "Successfully installed".
+
+![success](images/success.png)
 ____
 ## [Объединение в рой]
 TODO
