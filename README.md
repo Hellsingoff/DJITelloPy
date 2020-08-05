@@ -10,13 +10,13 @@
         * Примеры (TODO)
     * [Авторы](https://github.com/Hellsingoff/DJITelloPy#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D1%8B)
     * [Лицензия](https://github.com/Hellsingoff/DJITelloPy#%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F)
-* [DJI Tello] - о дронах.
-    * [Комплектация]
-    * [Техника безопасности]
-    * [Хранение]
+* [DJI Tello](https://github.com/Hellsingoff/DJITelloPy#dji-tello) - о дронах.
+    * [Комплектация](https://github.com/Hellsingoff/DJITelloPy#%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%82%D0%B0%D1%86%D0%B8%D1%8F)
+    * [Техника безопасности](https://github.com/Hellsingoff/DJITelloPy#%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D0%B0-%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8-%D0%B8-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-%D1%8D%D0%BA%D1%81%D0%BF%D0%BB%D1%83%D0%B0%D1%82%D0%B0%D1%86%D0%B8%D0%B8)
+    * [Хранение](https://github.com/Hellsingoff/DJITelloPy#%D1%85%D1%80%D0%B0%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5)
     * [Mission Pad](https://github.com/Hellsingoff/DJITelloPy#mission-pad)
     * [Установка Python и DJITelloPy](https://github.com/Hellsingoff/DJITelloPy#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-python-%D0%B8-djitellopy)
-    * [Объединение в рой]
+    * [Объединение в рой](https://github.com/Hellsingoff/DJITelloPy#%D0%BE%D0%B1%D1%8A%D0%B5%D0%B4%D0%B8%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B2-%D1%80%D0%BE%D0%B9)
 
 # DJITelloPy
 DJITelloPy - библиотека для Python 3.5 и выше, реализующая все команды, доступные в официальном [Tello SDK](https://dl-cdn.ryzerobotics.com/downloads/tello/20180910/Tello%20SDK%20Documentation%20EN_1.3.pdf) и [Tello EDU SDK](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf). Некоторые функции становятся более понятными после изучения инструкции по [Mission Pad](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20Mission%20Pad%20User%20Guide.pdf).
@@ -577,6 +577,8 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 
+drone.takeoff() # взлет
+
 print(drone.get_distance_tof()) # выводит расстояние до препятствия снизу
 
 drone.end() # удаляет drone
@@ -639,9 +641,11 @@ drone = Tello() # дрон по адресу 192.168.10.1
 
 drone.connect() # подключение
 
+drone.takeoff() # взлет
+
 print(drone.get_height()) # выводит высоту дрона
 
-drone.end() # удаляет drone
+drone.end() # приземление, удаляет drone
 ```
 ____
 #### get_highest_temperature()
@@ -1909,7 +1913,9 @@ ____
 * [sync(timeout=None)](https://github.com/Hellsingoff/DJITelloPy#synctimeoutnone) - синхронизация при параллельном выполнении.
 ____
 #### \_\_getattr\_\_(attr)
-Метод, позволяющий применять к рою [методы](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello). (TODO)
+Метод, позволяющий применять к рою [методы](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello) класса [Tello](https://github.com/Hellsingoff/DJITelloPy#tello). 
+
+Чуть подробнее об этом написано [тут](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-telloswarm-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2-tello).
 ```python
 from djitellopy import Tello # импорт класса управления одним дроном
 
@@ -2157,9 +2163,31 @@ swarm.end() # приземление и удаление объекта роя
 ```
 ____
 ### Применение к TelloSwarm методов Tello
+К рою применяются все методы класса Tello, но не все они работают как ожидается:
+| Тип команды | Ожидаемый результат | Фактический результат |
+|-------------|:-------------------:|:---------------------:|
+| Команда контроля дрона<br>Например:<br>[move_forward(x)](https://github.com/Hellsingoff/DJITelloPy#move_forwardx)<br>[enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads)<br>[end()](https://github.com/Hellsingoff/DJITelloPy#end) | Все дроны выполнят команду одновременно | Все дроны выполнят команду одновременно |
+| Команда быстрого получения информации из словаря с данными дрона<br>Например:<br>[get_battery()](https://github.com/Hellsingoff/DJITelloPy#get_battery)<br>[get_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#get_distance_tof) | Получим информацию от всех дронов | Получим None |
+| Запрос получения информации от дрона<br>Например:<br>[query_battery()](https://github.com/Hellsingoff/DJITelloPy#query_battery)<br>[query_distance_tof()](https://github.com/Hellsingoff/DJITelloPy#query_distance_tof) | Получим информацию от всех дронов | Получим None, но увидим запрошенные данные в логе |
 
+Это очень легко решается, достаточно использовать метод-итератор [\_\_iter\_\_()](https://github.com/Hellsingoff/DJITelloPy#__iter__):
+```python
+from djitellopy import TelloSwarm # импорт класса управления роем
 
-TODO
+# инициализация роя, передача IP массивом
+swarm = TelloSwarm.fromIps([
+    "192.168.1.245",
+    "192.168.1.220"
+])
+
+swarm.connect() # подключение ко всему рою
+
+for drone in swarm: # для каждого дрона в рое
+
+    print(drone.get_battery()) # вывести заряд аккумулятора
+
+swarm.end() # приземление и удаление объекта роя
+```
 ____
 ### Поля класса TelloSwarm
 | Имя поля | Данные | Назначение |
