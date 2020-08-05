@@ -210,7 +210,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Если обнаруживает коврик mid, летит в относительные координаты x2 y2 z2 через x1 y1 z1 со скоростью speed сантиметров в секунду, иначе - выводит ошибку и приземляется.
 
@@ -685,7 +685,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Возвращает int.
 ```python
@@ -705,7 +705,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Возвращает int.
 ```python
@@ -725,7 +725,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Возвращает int.
 ```python
@@ -745,7 +745,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Возвращает int.
 
@@ -970,7 +970,7 @@ ____
 
 Если Mission Pad с ID mid не обнаружен - выводит ошибку и приземляется.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
@@ -1011,9 +1011,9 @@ ____
 
 Если в точке x y z Mission Pad с ID mid2 не обнаружен - выводит ошибку и приземляется.
 
-Неоднозначную работу команды может вызвать слишком близкое расположение двух Mission Pad. (TODO ссылка на область камеры)
+Неоднозначную работу команды может вызвать слишком близкое расположение двух Mission Pad [(область видимости камеры дрона)](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Модуль хотя бы одной из координат x y z должен быть не менее 20, попытка лететь на меньшую дистанцию вызовет ошибку.
 
@@ -1711,7 +1711,7 @@ ____
 
 Команда поддерживается только в Tello EDU.
 
-Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в области видимости камеры дрона. (TODO ссылка на область камеры)
+Необходимо чтобы был активен поиск Mission Pad с помощью [enable_mission_pads()](https://github.com/Hellsingoff/DJITelloPy#enable_mission_pads), а так же чтобы какой-либо Mission Pad находился в [области видимости камеры дрона](https://github.com/Hellsingoff/DJITelloPy#mission-pad).
 
 Аргумент yказывает какие камеры задействовать для поиска:
 | Аргумент | Результат |
@@ -2183,7 +2183,7 @@ SDK Tello EDU был расширен в том числе [командами](
 
 ![MParea](images/MParea.png)
 
-Чем больше высота, тем шире область видимости. Однако, на высоте выше 120 см начинаются ошибки определения координат, а на высоте выше 150 см определение становится непостоянным и ухудшается с увеличением высоты вплоть до полной невозможности определить коврик на 180 см.
+Чем больше высота, тем шире область видимости. Однако, на высоте более 120 см начинаются ошибки определения координат, а на высоте более 150 см определение становится непостоянным и ухудшается с увеличением высоты вплоть до полной невозможности определить коврик на 180 см.
 
 Так же, в учебных целях, не рекомендуется располагать несколько Mission Pad слишком близко друг к другу. Лучше сделать так, чтобы в область видимости дрона попадал только один коврик одновременно для однозначного понимания команд, т.е. соблюдать между ними дистанцию не менее половины метра.
 ____
