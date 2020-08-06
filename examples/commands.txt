@@ -1,0 +1,5 @@
+takeoff
+forward 100
+sleep 5
+back 100
+land
