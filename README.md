@@ -2,7 +2,7 @@
     * [Tello](https://github.com/Hellsingoff/DJITelloPy#tello) - управление одним дроном.
         * [Методы класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
         * [Поля класса Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D0%BE%D0%BB%D1%8F-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-tello)
-        * Примеры (TODO)
+        * [Примеры](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B)
     * [TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#telloswarm) - управление роем.
         * [Методы класса TelloSwarm](https://github.com/Hellsingoff/DJITelloPy#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0-telloswarm)
         * [Применение к TelloSwarm методов Tello](https://github.com/Hellsingoff/DJITelloPy#%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-telloswarm-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%BE%D0%B2-tello)
